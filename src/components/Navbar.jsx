@@ -45,17 +45,17 @@ export const Navbar = () => {
           </div>
           {/* banner */}
           <div className="dark-bg flex">
-            <img src={logo} alt="logo" className="w-[260px] py-3 ml-[40px]" />
-            <h1 className="koulen font white mt-[65px] ml-11">LA CROIX BERTH<span className="light">AUD</span></h1>
+            <img src={logo} alt="logo" className="w-[260px] py-3 ml-[8%]" />
+            <p className="koulen font white mt-[35px] ml-[15%] text-9xl">LA CROIX BERTH<span className="light">AUD</span></p>
           </div>
           {/* bottom bar */}
-            <div className="dark-bg white">
-              <a>Maison de quartier</a>
+            <div className="dark-bg white flex justify-between text-xl pb-2">
+              <a className="ml-[10%]">Maison de quartier</a>
               <a>Programme</a>
               <a>A l'affiche</a>
               <a>Activités enfants</a>
               <a>Activités adultes</a>
-              <a>News</a>
+              <a className="mr-[10%]">News</a>
             </div>
           {/* end */}
           <div className="flex items-center gap-5">
