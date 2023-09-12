@@ -1,1 +1,47 @@
+.primary {
+  color: #005F91;
+}
 
+.primary-bg {
+  background-color: #005F91;
+}
+
+.secondary {
+  color: #059DE0;
+}
+
+.secondary-bg {
+  background-color: #059DE0;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+.white-bg {
+  background-color: #FFFFFF;
+}
+
+.light {
+  color: #0DFDFF;
+}
+
+.light-bg {
+  background-color: #0DFDFF;
+}
+
+.dark {
+  color: #052130;
+}
+
+.dark-bg {
+  background-color: #052130;
+}
+
+.Light-gray {
+  color: #EDF3F6;
+}
+
+.Light-gray-bg {
+  background-color: #EDF3F6;
+}
