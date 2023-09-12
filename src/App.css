@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Koulen";
+  src: local("Koulen-Regular"),
+    url("./assets/fonts/Koulen-Regular.ttf") format("truetype");
+}
+
+.koulen {
+  font-family: "Koulen";
+}
+
 .primary {
   color: #005F91;
 }

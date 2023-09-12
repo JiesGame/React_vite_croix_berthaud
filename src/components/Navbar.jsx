@@ -1,12 +1,16 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import { Collapse, Dropdown, initTE } from "tw-elements";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.svg";
+import logo from "../assets/img/logo.svg";
+import glass from "../assets/img/glass.svg";
 import { Logout } from "./Logout";
 import "../App.css";
 import Cookies from "js-cookie";
 import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';
+import "../assets/fonts/Koulen-Regular.ttf";
+
 
 export const Navbar = () => {
   const [userInfo] = useAtom(userAtom)
@@ -31,15 +35,30 @@ export const Navbar = () => {
       <>
         <nav className="">
           {/* top bar */}
-          <div className="w-full primary-bg py-[4px]">
-            <a className="light-bg py-[6px] px-[6px]">Nous rejoindre</a>
-            <a>Faire un don</a>
+          <div className="flex">
+            <div className="w-full primary-bg flex justify-end">
+              <input placeholder="Ma recherche ..." className="white dark-bg rounded-md h-[30px] mt-[7px] px-2"></input>
+              <img src={glass} alt="glass" className="w-8 ml-1 mr-2" />
+              <a href="*" className="light-bg pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg">Nous rejoindre</a>
+              <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg">Faire un don</a>
+            </div>
           </div>
           {/* banner */}
-          
+          <div className="dark-bg flex">
+            <img src={logo} alt="logo" className="w-[260px] py-3 ml-[40px]" />
+            <h1 className="koulen font white mt-[65px] ml-11">LA CROIX BERTH<span className="light">AUD</span></h1>
+          </div>
           {/* bottom bar */}
+            <div className="dark-bg white">
+              <a>Maison de quartier</a>
+              <a>Programme</a>
+              <a>A l'affiche</a>
+              <a>Activités enfants</a>
+              <a>Activités adultes</a>
+              <a>News</a>
+            </div>
+          {/* end */}
           <div className="flex items-center gap-5">
-            <img src={logo} alt="logo" className="ml-5" />
             <Link to="/" className="text-center w-full text-xl font-bold text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" data-te-dropdown-item-ref >Accueil</Link>
           </div>
           <div className="flex justify-end w-auto relative">
