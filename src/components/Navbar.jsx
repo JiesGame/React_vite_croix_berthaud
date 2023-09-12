@@ -30,10 +30,13 @@ export const Navbar = () => {
     return (
       <>
         <nav className="flex align-items justify-between w-full py-3 mt-3">
-        <div className="flex items-center gap-5">
-          <img src={logo} alt="logo" className="ml-5" />
+          {/* top bar */}
+          {/* banner */}
+          <div className="flex items-center gap-5">
+            <img src={logo} alt="logo" className="ml-5" />
             <Link to="/" className="text-center w-full text-xl font-bold text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" data-te-dropdown-item-ref >Accueil</Link>
           </div>
+          {/* bottom bar */}
           <div className="flex justify-end w-auto relative">
             <div id="navButton" className="flex-grow text-lg mr-6">
               <div className="absolute top-1/2 transform -translate-y-1/2 right-0 mr-2" data-te-dropdown-ref>
