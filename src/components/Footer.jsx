@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import logoSC from "../assets/img/saint-chamond.svg"
 
 export const Footer = () => {
 
@@ -7,32 +8,43 @@ export const Footer = () => {
 
   if (!isNotFoundPage) {
     return ( 
-    <footer className="bg-gray-100 w-full bottom-0 sticky">
-      <div className="w-full p-4">
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <a href="https://github.com/" className="flex items-center mb-4 sm:mb-0">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" className="h-8 mr-3" alt="GitHub Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">JiesGame</span>
-          </a>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+    <footer className="primary-bg text-white w-full">
+      <div className="grid grid-cols-3 py-3 mx-6">
+        <div className="flex justify-start">
+          <div className="grid">
+            <p className="font-semibold">Maison de quartier</p>
+            <p className="font-semibold">La Croix Berthaud</p>
+            <hr className="my-1"/>
+            <p>Square Henri Dunant</p>
+            <p>42400 Saint-Chamond</p>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <ul className="md:flex md:place-items-end grid place-items-stretch text-center">
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">About</a>
+              <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR" target="_blank" rel="noopener noreferrer" className="text-white dark flex justify-center">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    clip-rule="evenodd"> 
+                  </path>
+                </svg>
+              </a>
             </li>
+            <li className="md:mx-2 hidden md:inline-block">|</li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+              <a href="#" className="text-white hover:underline font-semibold">Contact</a>
             </li>
+            <li className="md:mx-2 hidden md:inline-block">|</li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">Licensing</a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">Contact</a>
+              <a href="#" className="text-white hover:underline font-semibold">Mentions légales</a>
             </li>
           </ul>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://github.com/JiesGame" className="hover:underline">JiesGame™</a>. All Rights Reserved.</span>
+        <div className="flex justify-end">
+          <a href="https://saint-chamond.fr/" target="_blank" rel="noopener noreferrer"><img src={logoSC} width={200} height={200} alt="logo Saint-Chamond"/></a>     
+        </div>
       </div>
-      <div className="" />
     </footer>
     );
   }

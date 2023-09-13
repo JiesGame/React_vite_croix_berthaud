@@ -51,8 +51,8 @@ export const Navbar = () => {
             <p className="koulen font white mt-[35px] ml-[15%] text-9xl">LA CROIX BERTH<span className="light">AUD</span></p>
           </div>
           {/* bottom bar */}
-            <div className="dark-bg white flex justify-between text-xl pb-2">
-              <a className="ml-[10%]">Maison de quartier</a>
+            <div className="dark-bg white flex justify-between text-xl pb-2 navbar">
+              <a className="ml-[10%] cursor-pointer">Maison de quartier</a>
               <a>Programme</a>
               <a>A l'affiche</a>
               <a>Activités enfants</a>

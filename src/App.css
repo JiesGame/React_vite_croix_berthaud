@@ -48,10 +48,22 @@
   background-color: #052130;
 }
 
+.dark :hover {
+  color: #052130;
+}
+
 .Light-gray {
   color: #EDF3F6;
 }
 
 .Light-gray-bg {
   background-color: #EDF3F6;
+}
+
+footer a:hover {
+  color: #052130;
+}
+
+.navbar a:hover {
+  color: #0DFDFF;
 }
