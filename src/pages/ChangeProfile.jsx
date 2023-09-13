@@ -38,121 +38,106 @@ export const ChangeProfile = () => {
   };
 
   return (
-    <div className="flex items-center justify-center ">
-      <div className="w-[26rem]">
-        <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="mb-4">
-            <h1 className="text-2xl text-center mb-4">
+    <div className="flex items-center justify-center my-14">
+      <div className="w-[30rem] h-fit">
+        <form className="bg-white shadow-lg rounded h-full" onSubmit={handleSubmit(onSubmit)}>
+          <div className="mt-8">
+            <h1 className="flex text-2xl justify-center items-center primary-bg w-full text-white h-12 rounded-t font-semibold">
               Mettre à jour son profil
             </h1>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Nouvelle adresse mail
-            </label>
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              type="text"
-              placeholder="Email..."
-              {...register("email")}
-            />
-            {errors.email?.message && (
-              <p className="text-red-500 text-xs">{errors.email?.message}</p>
-            )}
+            <div className="px-10 mt-4">
+              <label className="block primary text-xl font-semibold mb-2">
+                Nouvelle adresse mail
+              </label>
+              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="text" placeholder="exemple@email.fr" {...register('email')} />
+              {errors.email?.message && <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.email?.message}</p>}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Confirmation de l'adresse mail
-            </label>
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              type="text"
-              placeholder="Email..."
-              {...register("email_confirmation")}
-            />
-            {errors.email_confirmation?.message && (
-              <p className="text-red-500 text-xs">
-                {errors.email_confirmation?.message}
-              </p>
-            )}
+          <div className="mt-8">
+            <div className="px-10">
+              <label className="block primary text-xl font-semibold mb-2">
+                Confirmation de l'adresse mail
+              </label>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium"
+                type="text"
+                placeholder="exemple@email.fr"
+                {...register("email_confirmation")}
+              />
+              {errors.email_confirmation?.message && (
+                <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">
+                  {errors.email_confirmation?.message}
+                </p>
+              )}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Nouveau mot de passe
-            </label>
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-              type="password"
-              placeholder="Mot de passe..."
-              {...register("password")}
-            />
-            {errors.password?.message && (
-              <p className="text-red-500 text-xs">{errors.password?.message}</p>
-            )}
+          <div className="mt-8">
+            <div className="px-10">
+              <label className="block primary text-xl font-semibold mb-2">
+                Nouveau mot de passe
+              </label>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium"
+                type="password"
+                placeholder="Mot de passe..."
+                {...register("password")}
+              />
+              {errors.password?.message && (
+                <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.password?.message}</p>
+              )}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Confirmation du mot de passe
-            </label>
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-              type="password"
-              placeholder="Mot de passe..."
-              {...register("password_confirmation")}
-            />
-            {errors.password_confirmation?.message && (
-              <p className="text-red-500 text-xs">
-                {errors.password_confirmation?.message}
-              </p>
-            )}
+          <div className="mt-8">
+            <div className='px-10'>
+              <label className="block primary text-xl font-semibold mb-2">
+                Confirmation du mot de passe
+              </label>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium"
+                type="password"
+                placeholder="Mot de passe..."
+                {...register("password_confirmation")}
+              />
+              {errors.password_confirmation?.message && (
+                <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">
+                  {errors.password_confirmation?.message}
+                </p>
+              )}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Mot de passe actuel
-            </label>
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-              type="password"
-              placeholder="Mot de passe..."
-              {...register("current_password")}
-            />
-            {errors.current_password?.message && (
-              <p className="text-red-500 text-xs">
-                {errors.current_password?.message}
-              </p>
-            )}
+          <div className="mt-8">
+            <div className='px-10'> 
+              <label className="block primary text-xl font-semibold mb-2">
+                Mot de passe actuel
+              </label>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium"
+                type="password"
+                placeholder="Mot de passe..."
+                {...register("current_password")}
+              />
+              {errors.current_password?.message && (
+                <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">
+                  {errors.current_password?.message}
+                </p>
+              )}
+            </div>
           </div>
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mt-8">
             <input
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline cursor-pointer mb-10"
               value="Mettre à jour"
             />
           </div>
-          <div>
-            <p className="mb-2">
-              <Link
-                to="/login"
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              >
-                Se connecter
-              </Link>
-            </p>
-            <Link
-              to="/register"
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            >
-              Créer un compte
-            </Link>
-          </div>
         </form>
-        <div className="flex justify-center mb-4">
-          <button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            <Link to="/delete_account">Supprimer le profil</Link>
-          </button>
+        <div className="my-6 flex gap-2 justify-center text-lg text-red-500">
+          <p className='font-medium my-3'>
+            Mécontent ?
+          </p>
+          <Link to="/delete_account" className="my-3 text-center flex justify-center font-bold text-md  hover:underline">
+            Supprimer son profil
+          </Link>
         </div>
       </div>
     </div>
