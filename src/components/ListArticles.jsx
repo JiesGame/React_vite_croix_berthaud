@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { articlesFetch } from "../services/axiosAdmin";
+import { articlesFetch } from "../services/axiosArticle";
 import { Article } from "./Article";
 
 export const ListArticles = () => {

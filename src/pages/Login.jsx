@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import { loginFetch } from '../services/axios';
+import { loginFetch } from '../services/axiosUser';
 import { toastError, toastSuccess } from '../services/toast';
 import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';

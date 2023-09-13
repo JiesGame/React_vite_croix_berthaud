@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
-import { loginFetch, registerFetch } from '../services/axios';
+import { loginFetch, registerFetch } from '../services/axiosUser';
 import { toastSuccess } from '../services/toast';
 import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';

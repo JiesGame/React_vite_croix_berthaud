@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
-import { usersFetch } from "../../services/axiosAdmin";
+import { usersFetch } from "../../services/axiosArticle";
 
 export const AdminUsers = () => {
   const[usersData, setUsersData] = useState([])
