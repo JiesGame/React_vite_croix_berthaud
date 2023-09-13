@@ -60,6 +60,10 @@
   background-color: #EDF3F6;
 }
 
-a:hover {
+footer a:hover {
   color: #052130;
+}
+
+.navbar a:hover {
+  color: #0DFDFF;
 }
