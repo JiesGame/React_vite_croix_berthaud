@@ -11,7 +11,7 @@ export const ShowArticle = () => {
 
   useEffect(() => {
     showArticleFetch(id, setDataArticle);
-  }, [])
+  }, [id])
   
   return (
     <div>
@@ -19,6 +19,7 @@ export const ShowArticle = () => {
         id={dataArticle.id}
         title={dataArticle.title}
         content={dataArticle.content}
+        isLinkVisible={false}
       />
     </div>
   )
