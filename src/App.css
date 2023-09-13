@@ -13,7 +13,7 @@
 }
 
 .primary-bg {
-  background-color: #005F91;
+  background-color: #005F91 !important;
 }
 
 .secondary {
@@ -56,8 +56,12 @@
   color: #EDF3F6;
 }
 
-.Light-gray-bg {
+.light-gray-bg {
   background-color: #EDF3F6;
+}
+
+.light-gray-border {
+  border-color: #EDF3F6 !important;
 }
 
 footer a:hover {
