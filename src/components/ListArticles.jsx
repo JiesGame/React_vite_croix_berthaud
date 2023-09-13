@@ -19,6 +19,7 @@ export const ListArticles = () => {
         id={article.id}
         title={article.title}
         content={article.content}
+        isLinkVisible={true}
       />    
       ))}
     </div>
