@@ -34,21 +34,25 @@ export const Navbar = () => {
   if (!isNotFoundPage) {
     return (
       <>
-        <nav className="">
+        <nav className="primary-bg">
           {/* top bar */}
           <div className="flex">
-            <img src={fb} alt="facebook" />
-            <div className="w-full primary-bg flex justify-end">
+            <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR">
+              <img src={fb} alt="facebook" className="h-8 mt-[5px] ml-2" />
+            </a>
+            <div className="w-full flex justify-end">
+            <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg hover:text-[#052130]">Nouvel article</a>
+            <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg hover:text-[#052130]">Administration</a>
               <input placeholder="Ma recherche ..." className="white dark-bg rounded-md h-[30px] mt-[7px] px-2"></input>
               <img src={glass} alt="glass" className="w-8 ml-1 mr-2" />
-              <a href="*" className="light-bg pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg">Nous rejoindre</a>
-              <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg">Faire un don</a>
+              <a href="*" className="light-bg pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg hover:bg-[#052130] hover:text-[#0DFDFF]">Nous rejoindre</a>
+              <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium text-lg hover:text-[#052130]">Faire un don</a>
             </div>
           </div>
           {/* banner */}
           <div className="dark-bg flex">
             <img src={logo} alt="logo" className="w-[260px] py-3 ml-[8%]" />
-            <p className="koulen font white mt-[35px] ml-[15%] text-9xl">LA CROIX BERTH<span className="light">AUD</span></p>
+            <p className="koulen font white mt-[30px] p-0 ml-[15%] text-[120px] select-none">LA CROIX BERTH<span className="light">AUD</span></p>
           </div>
           {/* bottom bar */}
             <div className="dark-bg white flex justify-between text-xl pb-2 navbar">
