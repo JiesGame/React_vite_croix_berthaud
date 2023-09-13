@@ -3,12 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useAtom } from "jotai";
 import { userAtom } from "../store/atoms";
 import { toastError, toastInfo } from "../services/toast";
 import { useState } from "react";
-import { deleteProfileFetch } from "../services/axios";
+import { deleteProfileFetch } from "../services/axiosUser";
 
 export const DeleteProfile = () => {
   const [isDeleteConfirmation, setIsDeleteConfirmation] = useState(false);

@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { resetPasswordFetch } from '../services/axios';
+import { resetPasswordFetch } from '../services/axiosUser';
 import { toastSuccess } from '../services/toast';
 
 export const ResetPassword = () => {

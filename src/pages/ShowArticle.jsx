@@ -1,7 +1,7 @@
 import { Article } from "../components/Article"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { showArticleFetch } from "../services/axiosAdmin";
+import { showArticleFetch } from "../services/axiosArticle";
 
 
 export const ShowArticle = () => {

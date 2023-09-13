@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { useAtom } from "jotai";
 import { userAtom } from "../store/atoms";
 import { toastSuccess, toastError } from "../services/toast";
-import { changeProfileFetch } from "../services/axios";
+import { changeProfileFetch } from "../services/axiosUser";
 
 export const ChangeProfile = () => {
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
-import { loginFetch, registerFetch } from '../services/axios';
+import { loginFetch, registerFetch } from '../services/axiosUser';
 import { toastSuccess } from '../services/toast';
 import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';
@@ -76,7 +76,7 @@ export const Register = () => {
           <div>
             <div className='flex items-center justify-center mt-8'>
               <input type="checkbox" name="checkbox" className="w-4 h-4" {...register('confirmationCGU')}/>
-              <label for="default-checkbox" className="ml-2 text-sm font-medium primary">
+              <label className="ml-2 text-sm font-medium primary">
                 J'accepte les 
                 <Link to="#" className='pl-1 hover:underline font-bold'>
                   Conditions Générales d'Utilisation

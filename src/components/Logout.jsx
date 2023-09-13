@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';
 import { useNavigate } from 'react-router-dom';
 import { toastInfo, toastError } from '../services/toast';
-import { logoutFetch } from '../services/axios'
+import { logoutFetch } from '../services/axiosUser'
 
 export const Logout = () => {
   const [userInfo, setUserInfo] = useAtom(userAtom)

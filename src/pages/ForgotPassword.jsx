@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
 import { toastInfo } from '../services/toast';
-import { forgotPasswordFetch } from '../services/axios';
+import { forgotPasswordFetch } from '../services/axiosUser';
 import { useState } from 'react';
 
 export const ForgotPassword = () => {
