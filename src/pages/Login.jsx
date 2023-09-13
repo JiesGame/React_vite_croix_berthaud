@@ -10,7 +10,9 @@ import { userAtom } from '../store/atoms';
 export const Login = () => {
   const schema = yup.object().shape({
     email: yup.string().required("L'email est requis."),
-    password: yup.string().required("Le mot de passe est requis.")
+    password: yup.string().required("Le mot de passe est requis."),
+    confirmationCGU: yup.bool().oneOf([true], "Vous devez accepter les conditions générales d'utilisation.")
+
   });
 
   const {register, handleSubmit, formState: {errors} } = useForm({
@@ -34,9 +36,11 @@ export const Login = () => {
   return (
     <div className='flex items-center justify-center my-14'>
       <div className="w-[30rem] h-fit">
-        <form className="bg-white shadow-md rounded h-full" onSubmit={handleSubmit(onSubmit)}>
+        <form className="bg-white shadow-lg rounded h-full" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <h1 className='flex text-2xl justify-center items-center primary-bg w-full text-white h-12 rounded-t font-semibold'>Se connecter</h1>
+            <h1 className='flex text-2xl justify-center items-center primary-bg w-full text-white h-12 rounded-t font-semibold'>
+              Se connecter
+            </h1>
             <div className='px-10 mt-4'>
               <label className="block primary text-xl font-semibold mb-2">
                 Email
@@ -54,12 +58,8 @@ export const Login = () => {
               {errors.password?.message && <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.password?.message}</p>}
             </div>
           </div>
-          <div className="flex items-center justify-center my-8">
-            <input id="default-checkbox" type="checkbox" value="" className="w-4 h-4"/>
-            <label for="default-checkbox" className="ml-2 text-sm font-medium primary">J'accepte les <a href="#" className='hover:underline font-bold'>Conditions Générales d'Utilisation</a></label>
-          </div>
-          <div className="flex justify-around items-center mb-8 mt-6">
-            <input type="submit" className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="Connexion" />
+          <div className="flex justify-around items-center mb-8 mt-8">
+            <input type="submit" className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="Connexion"/>
             <Link to="/forgot_password" className="font-medium text-md primary hover:underline">
               Mot de passe oublié ?
             </Link>
@@ -69,10 +69,10 @@ export const Login = () => {
               <hr  className='light-gray-border border-[1px]'/>
             </div>
             <div className='mb-10 flex gap-2 justify-center'>
-              <p className='font-small text-md primary mb-4'>Pas encore adhérent ?</p>
-            <Link to="/register" className="text-center flex justify-center font-medium text-md primary hover:underline">
-              Créer un compte
-            </Link>
+              <p className='font-small text-md primary my-3'>Pas encore adhérent ?</p>
+              <Link to="/register" className="my-3 text-center flex justify-center font-medium text-md primary hover:underline">
+                Créer un compte
+              </Link>
             </div>
           </div>
         </form>
