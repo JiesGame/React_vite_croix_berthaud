@@ -20,6 +20,7 @@ export const ShowArticle = () => {
         title={dataArticle.title}
         content={dataArticle.content}
         isLinkVisible={false}
+        created_at={dataArticle.created_at}
       />
     </div>
   )
