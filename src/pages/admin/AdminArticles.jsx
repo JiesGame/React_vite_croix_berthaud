@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { Article } from "../../components/Article";
@@ -8,22 +9,28 @@ export const AdminArticles = () => {
   const[category, setCategory] = useState("news")
   
   useEffect(() => {
+    console.log(category)
     adminArticlesFetch(setDataArticles, category);
   },[category])
 
-  return (
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setCategory(value);
+  }
 
+
+  return (
     <div className="text-center">
       <h1>Gestion des articles</h1>
       <Link to='../admin_home'>Retour au tableau administrateur</Link>
       <Link to='../admin_create_article'>Créer un article</Link>
-      <select onChange={(e) => handleChange(e)}>
-        <option value="0">S</option>
-        <option value="1">M</option>
-        <option value="2">L</option>
-        <option value="3">XL</option>
-        <option value="4">XL</option>
-        <option value="5">XL</option>
+      <select value={category} onChange={handleChange}>
+        <option value="news">News</option>
+        <option value="maison_de_quartier">Maison de quartier</option>
+        <option value="programme">Programme</option>
+        <option value="a_l_affiche">A l'affiche</option>
+        <option value="activites_enfants">Activités enfants</option>
+        <option value="activites_adultes">Activités adultes</option>
       </select>
       <div>
       {dataArticles.map((article) => (
@@ -33,6 +40,7 @@ export const AdminArticles = () => {
         title={article.title}
         content={article.content}
         isLinkVisible={true}
+        created_at={article.created_at}
       />    
       ))}
       </div>

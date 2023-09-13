@@ -76,7 +76,7 @@ export const Register = () => {
           <div>
             <div className='flex items-center justify-center mt-8'>
               <input type="checkbox" name="checkbox" className="w-4 h-4" {...register('confirmationCGU')}/>
-              <label for="default-checkbox" className="ml-2 text-sm font-medium primary">
+              <label className="ml-2 text-sm font-medium primary">
                 J'accepte les 
                 <Link to="#" className='pl-1 hover:underline font-bold'>
                   Conditions Générales d'Utilisation
