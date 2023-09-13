@@ -4,6 +4,7 @@ import { Collapse, Dropdown, initTE } from "tw-elements";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/img/logo.svg";
 import glass from "../assets/img/glass.svg";
+import fb from "../assets/img/fb.svg";
 import { Logout } from "./Logout";
 import "../App.css";
 import Cookies from "js-cookie";
@@ -36,6 +37,7 @@ export const Navbar = () => {
         <nav className="">
           {/* top bar */}
           <div className="flex">
+            <img src={fb} alt="facebook" />
             <div className="w-full primary-bg flex justify-end">
               <input placeholder="Ma recherche ..." className="white dark-bg rounded-md h-[30px] mt-[7px] px-2"></input>
               <img src={glass} alt="glass" className="w-8 ml-1 mr-2" />
