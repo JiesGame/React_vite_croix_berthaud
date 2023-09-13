@@ -16,6 +16,9 @@ import { DeleteProfile } from "./pages/DeleteProfile";
 import { AdminHome } from "./pages/admin/AdminHome";
 import { AdminUsers } from "./pages/admin/AdminUsers";
 import { AdminArticles } from "./pages/admin/AdminArticles"
+import { AdminActivities } from "./pages/admin/AdminActivities";
+import { AdminCreateActivity } from "./pages/admin/AdminCreateActivity";
+import { ShowArticle } from "./pages/ShowArticle";
 
 function App() {
 
@@ -28,6 +31,8 @@ function App() {
               <Route path='admin_home' element={<AdminHome />} />
               <Route path='admin_users' element={<AdminUsers />}/>
               <Route path='admin_articles' element={<AdminArticles />}/>
+              <Route path='admin_activities' element={<AdminActivities />}/>
+              <Route path='admin_creates_activity' element={<AdminCreateActivity />}/>
             </Route>
             <Route element={<PrivateRoutes/>}>
               <Route path='change_profile' element={<ChangeProfile />} />
@@ -40,6 +45,7 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='forgot_password' element={<ForgotPassword />} />
             <Route path='reset_password/:token' element={<ResetPassword />} />
+            <Route path='article/:id' element={<ShowArticle />}/>
           </Routes>
         </Layout>
       </Router>
