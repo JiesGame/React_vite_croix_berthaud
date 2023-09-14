@@ -6,7 +6,9 @@ export const Layout = ({ children }) => {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <main className="h-full" >{children}</main>
+      <main className="flex-1" >
+        {children}
+      </main>
       <Footer />
     </div>
   )
