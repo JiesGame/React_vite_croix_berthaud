@@ -41,7 +41,6 @@ export const Navbar = () => {
     return (
       <>
         <nav className="primary-bg w-full">
-          {console.log(isMobile)}
           {/* top bar */}
           <div className="flex">
             <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR">
@@ -84,14 +83,12 @@ export const Navbar = () => {
                   }
                 </ul>
               </div>
-              { userInfo.is_admin ?
-                <Link to="/admin_create_article" className="mt-[6px]">
-                  <a className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">
-                    Nouvel article
-                  </a>
+              { userInfo?.is_admin ?
+                <Link to="/admin_create_article" className="light mt-2 pb-[6px] px-[14px] koulen font-medium hover:text-[#052130]">
+                  Nouvel article
                 </Link>
               :
-              <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">
+              <a href="*" className="light mt-2 pb-[6px] px-[14px] koulen font-medium hover:text-[#052130]">
                 Faire un don
               </a>
               }
