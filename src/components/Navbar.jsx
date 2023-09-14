@@ -47,9 +47,9 @@ export const Navbar = () => {
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2" />
             </a>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
-              <div className="hidden sm:block">
-                <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">Nouvel article</a>
-                <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">Administration</a>
+              <div className="hidden sm:block mt-[6px]">
+                <a href="*" className="light pb-[6px] pt-[8px] px-[4px] md:px-[14px] koulen font-medium hover:text-[#052130]">Nouvel article</a>
+                <a href="*" className="light pb-[6px] pt-[8px] px-[4px] md:px-[14px] koulen font-medium hover:text-[#052130]">Administration</a>
               </div>
               <input placeholder="Ma recherche ..." className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"></input>
               <img src={glass} alt="glass" className="w-8 ml-1 mr-2 hidden sm:block" />
@@ -61,9 +61,9 @@ export const Navbar = () => {
           <Link to="/" data-te-dropdown-item-ref >
             <div className="dark-bg flex justify-between w-full">
               <img src={logo} alt="logoSM" className="block sm:hidden w-[350px] py-3 m-auto" />
-              <img src={logo} alt="logo" className="hidden sm:block w-[200px] lg:w-[260px] py-3 xl:ml-[7%] lg:ml-[4%] sm:ml-[1%]" />
+              <img src={logo} alt="logo" className="hidden sm:block w-[200px] lg:w-[260px] py-3 2xl:ml-[8%] xl:ml-[7%] lg:ml-[4%] sm:ml-[1%]" />
               <div className="hidden sm:block">
-                <p className="flex justify-end koulen font white whitespace-nowrap p-0 select-none text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] mt-[40px] xl:mr-[7%] mr-[4%] 2xl:mr-[16%]">LA CROIX BERTH<span className="light">AUD</span></p>
+                <p className="flex justify-end koulen font white whitespace-nowrap p-0 select-none text-[60px] md:text-[76px] lg:text-[100px] xl:text-[120px] mt-[40px] xl:mr-[11%] mr-[4%] 2xl:mr-[26%]">LA CROIX BERTH<span className="light">AUD</span></p>
               </div>
             </div>
           </Link>
@@ -75,13 +75,13 @@ export const Navbar = () => {
               </button>
             </div>
           </div>
-          <div className={`md:flex dark-bg white flex whitespace-nowrap justify-between text-lg lg:text-xl pb-2 navbar ${isBurger ? "block" : "hidden"}`}>
-            <a className="ml-[1%] lg:ml-[10%] cursor-pointer">Maison de quartier</a>
+          <div className={`md:flex dark-bg pl-[1%] white flex whitespace-nowrap justify-between text-lg lg:text-xl pb-2 navbar ${isBurger ? "block flex-col md:flex-row" : "hidden"}`}>
+            <a className="lg:ml-[6%] 2xl:ml-[9%] cursor-pointer">Maison de quartier</a>
             <a>Programme</a>
             <a>A l'affiche</a>
             <a>Activités enfants</a>
             <a>Activités adultes</a>
-            <a className="mr-[1%] lg:mr-[10%]">News</a>
+            <a className="pr-[1%] lg:pr-[6%] 2xl:pr-[9%]">News</a>
           </div>
           {/* end */}
           <div className="flex items-center gap-5">
