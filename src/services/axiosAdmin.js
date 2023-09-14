@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 const baseURL = import.meta.env.VITE_API_URL;
 
 export const adminArticlesFetch = async (setDataArticles, category) => {
-  const fetchURL = `${baseURL}/admin/articles/${category}`
+  const fetchURL = `${baseURL}/admin/articles/${category}`;
   return axios.get(
     fetchURL,{
       headers: {
@@ -16,7 +16,28 @@ export const adminArticlesFetch = async (setDataArticles, category) => {
   )
   .then(response => {
     console.log('Response data:', response.data);
-    setDataArticles(response.data.reverse())
+    setDataArticles(response.data.reverse());
+    return response.data;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const createArticleFetch = async (data) => {
+  const fetchURL = `${baseURL}/articles`;
+  const fetchBody = data;
+  return axios.post(
+    fetchURL, fetchBody ,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {

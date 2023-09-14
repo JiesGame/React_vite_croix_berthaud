@@ -55,11 +55,8 @@ export const DeleteProfile = () => {
             {errors.current_password?.message && (<p className="text-red-500 text-xs">{errors.current_password?.message}</p>)}
           </div>
           <div className="flex justify-center mb-4">
-          <input
-            className="bg-red-500 hover:bg-red-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Supprimer le profil"
-            onClick={handleDeleteClick}
-          />
-        </div>
+            <input className="bg-red-500 hover:bg-red-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleDeleteClick} value="Supprimer le profil"/>
+          </div>
           {isDeleteConfirmation && (
             <div className="fixed inset-0 flex items-center justify-center z-50">
               <div className="bg-white p-4 rounded shadow-md">

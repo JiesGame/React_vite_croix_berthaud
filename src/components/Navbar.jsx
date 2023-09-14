@@ -19,13 +19,13 @@ export const Navbar = () => {
   const location = useLocation();
   const isNotFoundPage = location.pathname === "/404";
   const isLoggedIn = Cookies.get('token') !== undefined ? true : false;
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+  const [isMobile, setIsMobile] = useState(false);
   const [isBurger, setIsBurger] = useState(false);
 
   useEffect(() => {
     initTE({ Collapse, Dropdown });
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 767);
+      setIsMobile(false);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -47,14 +47,51 @@ export const Navbar = () => {
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2" />
             </a>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
-              <div className="hidden sm:block mt-[6px]">
-                <a href="*" className="light pb-[6px] pt-[8px] px-[4px] md:px-[14px] koulen font-medium hover:text-[#052130]">Nouvel article</a>
-                <a href="*" className="light pb-[6px] pt-[8px] px-[4px] md:px-[14px] koulen font-medium hover:text-[#052130]">Administration</a>
-              </div>
-              <input placeholder="Ma recherche ..." className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"></input>
+              <input placeholder="Recherche ..." className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"></input>
               <img src={glass} alt="glass" className="w-8 ml-1 mr-2 hidden sm:block" />
-              <a href="*" className="light-bg pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Nous rejoindre</a>
-              <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">Faire un don</a>
+              <div className="whitespace-nowrap select-none" data-te-dropdown-ref>
+                <a className="flex items-center hidden-arrow whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none gap-1" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
+                  {!isMobile && (
+                    (isLoggedIn ? <p className="light-bg pb-[6px] pt-[8px] px-[20px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Mon compte</p> : <p className="light-bg pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Nous rejoindre</p>)
+                  )}
+                </a>
+                <ul className="absolute left-0 right-auto hidden list-none overflow-hidden border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+                  {!isLoggedIn &&
+                  <>
+                    <li className="px-[10px] md:px-[18px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
+                      <Link to="/login" data-te-dropdown-item-ref >Se connecter</Link>
+                    </li>
+                    <li className="px-[1px] md:px-[18px] py-1 light-bg text center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
+                      <Link to="/register" data-te-dropdown-item-ref >Nouveau compte</Link>
+                    </li>
+                  </>
+                  }
+                  {isLoggedIn &&
+                  <>
+                    { userInfo.is_admin &&
+                      <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
+                        <Link to="/admin_home">Administration</Link>
+                      </li>
+                    }
+                    <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
+                      <Link to="/change_profile" data-te-dropdown-item-ref > profil</Link>
+                    </li>
+                    <li>
+                      <Logout />
+                    </li>
+                  </>
+                  }
+                </ul>
+              </div>
+              { userInfo?.is_admin ?
+                <Link to="/admin_create_article" className="light mt-2 pb-[6px] px-[14px] koulen font-medium hover:text-[#052130]">
+                  Nouvel article
+                </Link>
+              :
+              <a href="*" className="light mt-2 pb-[6px] px-[14px] koulen font-medium hover:text-[#052130]">
+                Faire un don
+              </a>
+              }
             </div>
           </div>
           {/* banner */}
@@ -77,50 +114,14 @@ export const Navbar = () => {
           </div>
           <div className={`md:flex dark-bg pl-[1%] white flex whitespace-nowrap justify-between text-lg lg:text-xl pb-2 navbar ${isBurger ? "block flex-col md:flex-row" : "hidden"}`}>
             <a className="lg:ml-[6%] 2xl:ml-[9%] cursor-pointer">Maison de quartier</a>
-            <a>Programme</a>
-            <a>A l'affiche</a>
-            <a>Activités enfants</a>
-            <a>Activités adultes</a>
-            <a className="pr-[1%] lg:pr-[6%] 2xl:pr-[9%]">News</a>
+            <a className="cursor-pointer">Programme</a>
+            <a className="cursor-pointer">A l'affiche</a>
+            <a className="cursor-pointer">Activités enfants</a>
+            <a className="cursor-pointer">Activités adultes</a>
+            <a className="pr-[1%] lg:pr-[6%] 2xl:pr-[9%] cursor-pointer">News</a>
           </div>
+          <div className="primary-bg w-full h-3" />
           {/* end */}
-          <div className="flex items-center gap-5">
-            <Link to="/" className="text-center w-full text-xl font-bold text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" data-te-dropdown-item-ref >Accueil</Link>
-          </div>
-          <div className="flex justify-end w-auto relative">
-            <div id="navButton" className="flex-grow text-lg mr-6">
-              <div className="absolute top-1/2 transform -translate-y-1/2 right-0 mr-2" data-te-dropdown-ref>
-                <a className="flex items-center hidden-arrow whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none gap-1 mr-10" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
-                  <img id="dropdown" src={logo} className="rounded-full ml-10" style={{ height: `30px`, width: `30px` }}/>
-                  {!isMobile && (
-                    (isLoggedIn ? <p>{userInfo.email}</p> : <p>Se connecter / Créer un compte</p>)
-                  )}
-                </a>
-                <ul className="absolute left-0 right-auto z-[1000] m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
-                  {!isLoggedIn &&
-                  <>
-                    <li>
-                      <Link to="/login" className="block text-center w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" data-te-dropdown-item-ref >Se connecter</Link>
-                    </li>
-                    <li>
-                      <Link to="/register" className="block text-center w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" data-te-dropdown-item-ref >Créer un compte</Link>
-                    </li>
-                  </>
-                  }
-                  {isLoggedIn &&
-                  <>
-                    <li>
-                      <Link to="/change_profile" className="block text-center w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" data-te-dropdown-item-ref >Mettre à jour son profil</Link>
-                    </li>
-                    <li>
-                      <Logout />
-                    </li>
-                  </>
-                  }
-                </ul>
-              </div>
-            </div>
-          </div>
         </nav>
       </>
     );
