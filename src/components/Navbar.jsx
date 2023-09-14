@@ -48,12 +48,7 @@ export const Navbar = () => {
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2" />
             </a>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
-              <div className="mt-[6px]">
-                <Link to="/admin_create_article">
-                  <a className="light pb-[6px] px-[4px] md:px-[14px] koulen font-medium hover:text-[#052130]">Nouvel article</a>
-                </Link>
-              </div>
-              <input placeholder="Ma recherche ..." className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"></input>
+              <input placeholder="Recherche ..." className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"></input>
               <img src={glass} alt="glass" className="w-8 ml-1 mr-2 hidden sm:block" />
               <div className="whitespace-nowrap select-none" data-te-dropdown-ref>
                 <a className="flex items-center hidden-arrow whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none gap-1" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
@@ -89,7 +84,17 @@ export const Navbar = () => {
                   }
                 </ul>
               </div>
-              <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">Faire un don</a>
+              { userInfo.is_admin ?
+                <Link to="/admin_create_article" className="mt-[6px]">
+                  <a className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">
+                    Nouvel article
+                  </a>
+                </Link>
+              :
+              <a href="*" className="light pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:text-[#052130]">
+                Faire un don
+              </a>
+              }
             </div>
           </div>
           {/* banner */}
