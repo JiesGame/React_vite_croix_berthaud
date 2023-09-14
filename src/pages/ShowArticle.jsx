@@ -1,7 +1,7 @@
 import { Article } from "../components/Article"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { showArticleFetch } from "../services/axiosAdmin";
+import { showArticleFetch } from "../services/axiosArticle";
 
 
 export const ShowArticle = () => {
@@ -20,6 +20,7 @@ export const ShowArticle = () => {
         title={dataArticle.title}
         content={dataArticle.content}
         isLinkVisible={false}
+        created_at={dataArticle.created_at}
       />
     </div>
   )
