@@ -5,7 +5,7 @@ import { toastInfo, toastError } from '../services/toast';
 import { logoutFetch } from '../services/axiosUser'
 
 export const Logout = () => {
-  const [serInfo, setUserInfo] = useAtom(userAtom)
+  const [userInfo, setUserInfo] = useAtom(userAtom)
   const navigate = useNavigate();
 
   const logout = async () => {
