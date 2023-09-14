@@ -25,7 +25,7 @@ export const DeleteProfile = () => {
     setIsDeleteConfirmation(false)
     try {
       const userDeleteProfil = await deleteProfileFetch(data, setUserInfo);
-      if(userDeleteProfil.success) {
+      if(userDeleteProfil) {
         toastInfo("Votre compte a bien été supprimé.");
         navigate('/');
       }
