@@ -18,7 +18,6 @@ export const AdminArticles = () => {
     setCategory(value);
   }
 
-
   return (
     <div className="text-center">
       <h1>Gestion des articles</h1>
