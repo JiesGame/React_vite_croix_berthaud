@@ -1,7 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useAtom } from 'jotai';
+import { userAtom } from '../store/atoms';
+import { DeleteArticleButton } from './DeleteArticleButton';
 
 export const Article = (props) => {
+  const [userInfo] = useAtom(userAtom)
   const title = props.title;
   const content = props.content;
   const articleID = props.id;
@@ -34,6 +39,12 @@ export const Article = (props) => {
             {content}
           </p>
         </div>
+        {userInfo.is_admin &&
+          <div className='flex justify-center gap-4 mb-4'>
+            <Link to={`/admin_edit_article/${articleID}`} className='bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Editer l'article</Link>
+            <DeleteArticleButton articleID={articleID}/>
+          </div>
+        }
         <div className="flex justify-between primary-bg text-white rounded-b py-3">
           <div className="ml-[1.5%]">ETOILES</div>
             <a href="#" className="hover:underline mr-[1.5%]">

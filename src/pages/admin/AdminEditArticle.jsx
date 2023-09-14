@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toastError, toastSuccess } from '../../services/toast';
-import { createArticleFetch } from '../../services/axiosAdmin';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { showArticleFetch } from '../../services/axiosArticle';
+import { updateArticleFetch } from '../../services/axiosAdmin';
 
-export const AdminCreateArticle = () => {
+export const AdminEditArticle = () => {
   const [dataArticle, setDataArticle] = useState({title:"",content:"", category:"news", private:false})
   const navigate = useNavigate();
+  const { id } = useParams();
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
@@ -16,17 +18,21 @@ export const AdminCreateArticle = () => {
     });
   };
 
+  useEffect(() => {
+    showArticleFetch(id, setDataArticle)
+  },[id])
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = JSON.stringify({"article":dataArticle})
     try {
-      const createArticle = await createArticleFetch(data);
-      if(createArticle) {
-        toastSuccess("L'article a été créé !");
+      const editArticle = await updateArticleFetch(data, id);
+      if(editArticle) {
+        toastSuccess("L'article a été mis à jour !");
         navigate('/');
       }
     } catch(error) {
-      toastError("L'article n'a pas pu être créé.");
+      toastError("L'article n'a pas pu être mis à jour.");
     }
   }
 

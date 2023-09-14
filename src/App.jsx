@@ -20,6 +20,7 @@ import { AdminActivities } from "./pages/admin/AdminActivities";
 import { AdminCreateActivity } from "./pages/admin/AdminCreateActivity";
 import { ShowArticle } from "./pages/ShowArticle";
 import { AdminCreateArticle } from "./pages/admin/AdminCreateArticle";
+import { AdminEditArticle } from "./pages/admin/AdminEditArticle";
 
 function App() {
 
@@ -33,11 +34,12 @@ function App() {
               <Route path='admin_users' element={<AdminUsers />}/>
               <Route path='admin_articles' element={<AdminArticles />}/>
               <Route path='admin_create_article' element={<AdminCreateArticle />}/>
+              <Route path='admin_edit_article/:id' element={<AdminEditArticle />}/>
               <Route path='admin_activities' element={<AdminActivities />}/>
               <Route path='admin_create_activity' element={<AdminCreateActivity />}/>
             </Route>
             <Route element={<PrivateRoutes/>}>
-              <Route path='change_profile' element={<ChangeProfile />} />
+              <Route path='change_profile' element={<ChangeProfile />}/>
               <Route path='delete_account' element={<DeleteProfile />}/>
             </Route>
             <Route path="/" element={<Home />} />

@@ -43,24 +43,3 @@ export const showArticleFetch = async (id, setDataArticle) => {
     throw error;
   });
 };
-
-export const usersFetch = async (setUsersData) => {
-  const fetchURL = `${baseURL}/users`
-  return axios.get(
-    fetchURL,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${Cookies.get('token')}`
-      }
-    }
-  )
-  .then(response => {
-    console.log('Response data:', response.data);
-    setUsersData(response.data)
-    return response.data
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    throw error;
-  });
-};
