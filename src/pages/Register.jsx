@@ -78,7 +78,7 @@ export const Register = () => {
               <input type="checkbox" name="checkbox" className="w-4 h-4" {...register('confirmationCGU')}/>
               <label className="ml-2 text-sm font-medium primary">
                 J'accepte les 
-                <Link to="#" className='pl-1 hover:underline font-bold'>
+                <Link to="/cgu" className='pl-1 hover:underline font-bold' target="_blank" rel="noopener noreferrer">
                   Conditions Générales d'Utilisation
                 </Link>
               </label>

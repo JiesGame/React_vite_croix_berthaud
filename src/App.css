@@ -121,3 +121,11 @@ footer a:hover {
   background-color: #052130;
   border-radius: 100%;
 }
+
+.fbicon:hover {
+  filter: invert(6) !important;
+}
+
+.fbiconNav:hover {
+  filter: invert(5) saturate(0) brightness(10);
+}

@@ -41,10 +41,9 @@ export const Navbar = () => {
     return (
       <>
         <nav className="primary-bg w-full">
-          {/* top bar */}
           <div className="flex">
             <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR" target="_blank" rel="noopener noreferrer">
-              <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2 logo" />
+              <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2 fbiconNav" />
             </a>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
               <input placeholder="Recherche ..." className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"></input>
@@ -94,7 +93,6 @@ export const Navbar = () => {
               }
             </div>
           </div>
-          {/* banner */}
           <Link to="/" data-te-dropdown-item-ref >
             <div className="dark-bg flex justify-between w-full">
               <img src={logo} alt="logoSM" className="block sm:hidden w-[350px] py-3 m-auto" />
@@ -104,7 +102,6 @@ export const Navbar = () => {
               </div>
             </div>
           </Link>
-          {/* bottom bar */}
           <div className="md:hidden">
             <div className="dark-bg pl-2">
               <button className="text-white hover:text-gray-300 focus:outline-none" onClick={toggleBurger}>
@@ -121,7 +118,6 @@ export const Navbar = () => {
             <a className="pr-[1%] lg:pr-[6%] 2xl:pr-[9%] cursor-pointer">News</a>
           </div>
           <div className="primary-bg w-full h-3" />
-          {/* end */}
         </nav>
       </>
     );
