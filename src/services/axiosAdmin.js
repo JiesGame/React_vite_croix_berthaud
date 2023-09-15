@@ -25,6 +25,47 @@ export const usersFetch = async (setUsersData) => {
   });
 };
 
+export const userFetch = async (id, setInfoDeleteUSer) => {
+  const fetchURL = `${baseURL}/users/${id}`
+  return axios.get(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
+    setInfoDeleteUSer({id:response.data.id,email:response.data.email})
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const userAdminDeleteFetch = async (id) => {
+  const fetchURL = `${baseURL}/admin/user_destroy_by_admin/${id}`
+  return axios.delete(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
 export const adminArticlesFetch = async (setDataArticles, category) => {
   const fetchURL = `${baseURL}/admin/articles/${category}`;
   return axios.get(
