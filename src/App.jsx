@@ -4,6 +4,8 @@ import { NotFound } from "./pages/NotFound";
 import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { Layout } from "./components/Layout";
+import { UserCharter } from "./pages/UserCharter";
+import { Cgu } from "./pages/Cgu";
 import './App.css';
 import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetPassword } from "./pages/ResetPassword";
@@ -50,6 +52,8 @@ function App() {
             <Route path='forgot_password' element={<ForgotPassword />} />
             <Route path='reset_password/:token' element={<ResetPassword />} />
             <Route path='article/:id' element={<ShowArticle />}/>
+            <Route path='user_charter' element={<UserCharter />} />
+            <Route path='cgu' element={<Cgu />} />
           </Routes>
         </Layout>
       </Router>

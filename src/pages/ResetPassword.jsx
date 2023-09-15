@@ -58,7 +58,7 @@ export const ResetPassword = () => {
             </div>
           </div>
           <div className="flex justify-around items-center mb-8 mt-8">
-            <input type="submit" className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="Valider"/>
+            <input type="submit" className="button cursor-pointer primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="Valider"/>
           </div>
           <div>
             <div className='px-6 mb-2'>
