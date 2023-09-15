@@ -86,7 +86,7 @@ export const Register = () => {
             {errors.confirmationCGU?.message && <p className="mt-2 flex justify-center ml-1 font-semibold text-red-500 text-sm">{errors.confirmationCGU?.message}</p>}
           </div>
           <div className="flex justify-around items-center mb-8 mt-8">
-            <input type="submit" className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="S'enregistrer"/>
+            <input type="submit" className="button cursor-pointer primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="S'enregistrer"/>
           </div>
           <div>
             <div className='px-6 mb-2'>
