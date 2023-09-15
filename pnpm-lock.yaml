@@ -23,6 +23,9 @@ dependencies:
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
+  file-saver:
+    specifier: ^2.0.5
+    version: 2.0.5
   fr:
     specifier: link:moment/locale/fr
     version: link:moment/locale/fr
