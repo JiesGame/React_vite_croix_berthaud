@@ -39,7 +39,7 @@ export const Article = (props) => {
             {content}
           </p>
         </div>
-        {userInfo.is_admin &&
+        {userInfo?.is_admin &&
           <div className='flex justify-center gap-4 mb-4'>
             <Link to={`/admin_edit_article/${articleID}`} className='bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Editer l'article</Link>
             <DeleteArticleButton articleID={articleID}/>
