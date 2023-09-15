@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
-// const baseURL = import.meta.env.VITE_API_URL;
+//const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const articlesFetch = async (setDataArticles) => {
   const fetchURL = `${baseURL}/articles`
