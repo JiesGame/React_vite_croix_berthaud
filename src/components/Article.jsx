@@ -17,11 +17,11 @@ export const Article = (props) => {
 
   return (
     <div className="text-center">
-      <div className="mx-[20%]">
+      <div className="md:mx-[20%] mx-[5%]">
         <div className="border-2 rounded-lg shadow-lg w-full h-fit my-10">
           <div className="primary-bg rounded-t py-3">
             <p className="text-white ml-[1.5%] font-normal">
-              Mis en ligne le, {formattedDate}
+              Mis en ligne le {formattedDate}
             </p>
           </div>
           <div>
