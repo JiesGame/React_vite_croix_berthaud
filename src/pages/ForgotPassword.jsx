@@ -24,6 +24,7 @@ export const ForgotPassword = () => {
       }
     } catch(error) {
       setErrorMessage(error);
+      toastInfo("Un mail a été envoyé à l'adresse indiqué (sous réserve de l'existence d'un compte).");
     }
   }
 
