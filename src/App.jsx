@@ -9,9 +9,18 @@ import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetPassword } from "./pages/ResetPassword";
 import { ChangeProfile } from "./pages/ChangeProfile";
 import { PrivateRoutes } from "./services/PrivateRoutes";
+import { AdminRoutes } from "./services/AdminRoutes";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DeleteProfile } from "./pages/DeleteProfile";
+import { AdminHome } from "./pages/admin/AdminHome";
+import { AdminUsers } from "./pages/admin/AdminUsers";
+import { AdminArticles } from "./pages/admin/AdminArticles"
+import { AdminActivities } from "./pages/admin/AdminActivities";
+import { AdminCreateActivity } from "./pages/admin/AdminCreateActivity";
+import { ShowArticle } from "./pages/ShowArticle";
+import { AdminCreateArticle } from "./pages/admin/AdminCreateArticle";
+import { AdminEditArticle } from "./pages/admin/AdminEditArticle";
 
 function App() {
 
@@ -20,8 +29,17 @@ function App() {
       <Router>
         <Layout>
           <Routes>
+            <Route element={<AdminRoutes/>}>
+              <Route path='admin_home' element={<AdminHome />} />
+              <Route path='admin_users' element={<AdminUsers />}/>
+              <Route path='admin_articles' element={<AdminArticles />}/>
+              <Route path='admin_create_article' element={<AdminCreateArticle />}/>
+              <Route path='admin_edit_article/:id' element={<AdminEditArticle />}/>
+              <Route path='admin_activities' element={<AdminActivities />}/>
+              <Route path='admin_create_activity' element={<AdminCreateActivity />}/>
+            </Route>
             <Route element={<PrivateRoutes/>}>
-              <Route path='change_profile' element={<ChangeProfile />} />
+              <Route path='change_profile' element={<ChangeProfile />}/>
               <Route path='delete_account' element={<DeleteProfile />}/>
             </Route>
             <Route path="/" element={<Home />} />
@@ -31,6 +49,7 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='forgot_password' element={<ForgotPassword />} />
             <Route path='reset_password/:token' element={<ResetPassword />} />
+            <Route path='article/:id' element={<ShowArticle />}/>
           </Routes>
         </Layout>
       </Router>

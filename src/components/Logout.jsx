@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';
 import { useNavigate } from 'react-router-dom';
 import { toastInfo, toastError } from '../services/toast';
-import { logoutFetch } from '../services/axios'
+import { logoutFetch } from '../services/axiosUser'
 
 export const Logout = () => {
   const [userInfo, setUserInfo] = useAtom(userAtom)
@@ -12,7 +12,7 @@ export const Logout = () => {
     try {
       const logoutProfil = await logoutFetch(setUserInfo);
       if(logoutProfil) {
-        navigate('/login');
+        navigate('/');
         toastInfo('Vous vous êtes déconnectés.');
       }
     } catch(error) {
@@ -21,6 +21,6 @@ export const Logout = () => {
   }
 
   return (
-    <button className="block text-center w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" onClick={logout}>Se déconnecter</button>
+    <button className="px-[8px] md:px-[12px] py-1 light-bg text center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]" onClick={logout}>Se deconnecter</button>
   )
 };

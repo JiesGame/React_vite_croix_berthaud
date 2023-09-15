@@ -2,11 +2,11 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "../store/atoms";
 
-export const PrivateRoutes =() => {
+export const AdminRoutes =() => {
   const [userInfo] = useAtom(userAtom)
 
-  const auth = userInfo?.email != "" ? true : false;
+  const auth = userInfo.is_admin != "" ? true : false;
   return(
-    auth ? <Outlet/> : <Navigate to="/login"/>
+    auth ? <Outlet/> : <Navigate to="/"/>
   )
 }

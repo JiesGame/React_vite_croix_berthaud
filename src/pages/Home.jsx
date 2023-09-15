@@ -1,12 +1,13 @@
 import '../App.css';
+import { ListArticles } from '../components/ListArticles';
+
 
 export const Home = () => {
 
+
   return (
     <div id="home">
-      <article>
-        <p className="text-red-600">TEST HOME</p>
-      </article>
+      <ListArticles />
     </div>
   );
 };

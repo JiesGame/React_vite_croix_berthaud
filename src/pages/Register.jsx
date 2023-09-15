@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
-import { loginFetch, registerFetch } from '../services/axios';
+import { loginFetch, registerFetch } from '../services/axiosUser';
 import { toastSuccess } from '../services/toast';
 import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';
@@ -40,51 +40,68 @@ export const Register = () => {
   };
 
   return (
-    <div className='flex items-center justify-center '>
-      <div className="w-full max-w-xs">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
+    <div className='flex items-center justify-center my-14'>
+      <div className="w-[30rem] h-fit">
+        <form className="bg-white shadow-lg rounded h-full" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-          <h1 className='text-2xl text-center mb-4'>Créer un compte</h1>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Email
-            </label>
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" placeholder="Adresse mail..." {...register('email')} />
-            {errors.email?.message && <p className="text-red-500 text-xs">{errors.email?.message}</p>}
+            <h1 className='flex text-2xl justify-center items-center primary-bg w-full text-white h-12 rounded-t font-semibold'>
+              Créer un compte
+            </h1>
+            <div className='px-10 mt-4'>
+              <label className="block primary text-xl font-semibold mb-2">
+                Email
+              </label>
+              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="text" placeholder="exemple@email.fr" {...register('email')} />
+              {errors.email?.message && <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.email?.message}</p>}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Mot de passe
-            </label>
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="password" placeholder="Mot de passe..." {...register('password')} />
-            {errors.password?.message && <p className="text-red-500 text-xs">{errors.password?.message}</p>}
+          <div className="mt-8">
+            <div className='px-10'>
+              <label className="block primary text-xl font-semibold mb-2">
+                Mot de passe
+              </label>
+              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="password" placeholder="Mot de passe" {...register('password')} />
+              {errors.password?.message && <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.password?.message}</p>}
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Confirmation du mot de passe
-            </label>
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="password" placeholder="Confirmation du mot de passe..." {...register('password_confirmation')} />
-            {errors.password_confirmation?.message && <p className="text-red-500 text-xs">{errors.password_confirmation?.message}</p>}
+          <div className="mt-8">
+            <div className='px-10'>
+              <label className="block primary text-xl font-semibold mb-2">
+                Confirmation du mot de passe
+              </label>
+              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="password" placeholder="Confirmation du mot de passe..." {...register('password_confirmation')} />
+              {errors.password_confirmation?.message && <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.password_confirmation?.message}</p>}
+            </div>
           </div>
-          <div className="md:flex md:items-center mb-6">
-            <label className="block text-gray-500 font-bold">
-              <input type="checkbox" name="checkbox" {...register('confirmationCGU')}/>
-              <span className="text-sm">
-                J'accepte les CGU
-              </span>
-              {errors.confirmationCGU?.message && <p className="text-red-500 text-xs">{errors.confirmationCGU?.message}</p>}
-            </label>
+          <div>
+            <div className='flex items-center justify-center mt-8'>
+              <input type="checkbox" name="checkbox" className="w-4 h-4" {...register('confirmationCGU')}/>
+              <label className="ml-2 text-sm font-medium primary">
+                J'accepte les 
+                <Link to="#" className='pl-1 hover:underline font-bold'>
+                  Conditions Générales d'Utilisation
+                </Link>
+              </label>
+            </div>
+            {errors.confirmationCGU?.message && <p className="mt-2 flex justify-center ml-1 font-semibold text-red-500 text-sm">{errors.confirmationCGU?.message}</p>}
           </div>
-          <div className="flex justify-center mb-2">
-            <input type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Créer le compte" />
+          <div className="flex justify-around items-center mb-8 mt-8">
+            <input type="submit" className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="S'enregistrer"/>
           </div>
-          {errorMessage && <p className='mt-4 text-sm text-red-500 text-center'>Erreur lors de l'envoi : cet email est sûrement déjà pris.</p>}
-          <Link to="/login" className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
-            Se connecter
-          </Link>
+          <div>
+            <div className='px-6 mb-2'>
+              <hr  className='light-gray-border border-[1px]'/>
+            </div>
+            <div className='mb-10 flex gap-2 justify-center'>
+              <p className='font-small text-md primary my-3'>
+                Déjà adhérent ?
+              </p>
+              <Link to="/login" className="my-3 text-center flex justify-center font-medium text-md primary hover:underline">
+                Se connecter
+              </Link>
+            </div>
+          </div>
         </form>
-        <p className="text-center text-gray-500 text-xs">
-          &copy;2023 JiesGame. All rights reserved.
-        </p>
       </div>
     </div>
   )

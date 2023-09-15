@@ -3,12 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useAtom } from "jotai";
 import { userAtom } from "../store/atoms";
 import { toastError, toastInfo } from "../services/toast";
 import { useState } from "react";
-import { deleteProfileFetch } from "../services/axios";
+import { deleteProfileFetch } from "../services/axiosUser";
 
 export const DeleteProfile = () => {
   const [isDeleteConfirmation, setIsDeleteConfirmation] = useState(false);
@@ -26,7 +25,7 @@ export const DeleteProfile = () => {
     setIsDeleteConfirmation(false)
     try {
       const userDeleteProfil = await deleteProfileFetch(data, setUserInfo);
-      if(userDeleteProfil.success) {
+      if(userDeleteProfil) {
         toastInfo("Votre compte a bien été supprimé.");
         navigate('/');
       }
@@ -56,11 +55,8 @@ export const DeleteProfile = () => {
             {errors.current_password?.message && (<p className="text-red-500 text-xs">{errors.current_password?.message}</p>)}
           </div>
           <div className="flex justify-center mb-4">
-          <input
-            className="bg-red-500 hover:bg-red-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Supprimer le profil"
-            onClick={handleDeleteClick}
-          />
-        </div>
+            <input className="bg-red-500 hover:bg-red-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleDeleteClick} value="Supprimer le profil"/>
+          </div>
           {isDeleteConfirmation && (
             <div className="fixed inset-0 flex items-center justify-center z-50">
               <div className="bg-white p-4 rounded shadow-md">

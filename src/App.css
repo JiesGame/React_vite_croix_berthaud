@@ -1,1 +1,73 @@
+@font-face {
+  font-family: "Koulen";
+  src: local("Koulen-Regular"),
+    url("./assets/fonts/Koulen-Regular.ttf") format("truetype");
+}
 
+.koulen {
+  font-family: "Koulen";
+}
+
+.primary {
+  color: #005F91;
+}
+
+.primary-bg {
+  background-color: #005F91 !important;
+}
+
+.secondary {
+  color: #059DE0;
+}
+
+.secondary-bg {
+  background-color: #059DE0;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+.white-bg {
+  background-color: #FFFFFF;
+}
+
+.light {
+  color: #0DFDFF;
+}
+
+.light-bg {
+  background-color: #0DFDFF;
+}
+
+.dark {
+  color: #052130;
+}
+
+.dark-bg {
+  background-color: #052130;
+}
+
+.dark :hover {
+  color: #052130;
+}
+
+.Light-gray {
+  color: #EDF3F6;
+}
+
+.light-gray-bg {
+  background-color: #EDF3F6;
+}
+
+.light-gray-border {
+  border-color: #EDF3F6 !important;
+}
+
+footer a:hover {
+  color: #052130;
+}
+
+.navbar a:hover {
+  color: #0DFDFF;
+}

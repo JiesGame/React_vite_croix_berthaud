@@ -4,9 +4,11 @@ import { Footer } from "./Footer";
 
 export const Layout = ({ children }) => {
   return (
-    <div className="">
+    <div className="flex flex-col h-screen">
       <Navbar />
-      <main className="" >{children}</main>
+      <main className="flex-1" >
+        {children}
+      </main>
       <Footer />
     </div>
   )

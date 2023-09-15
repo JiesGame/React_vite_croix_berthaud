@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const baseURL = import.meta.env.VITE_API_URL;
+const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
+// const baseURL = import.meta.env.VITE_API_URL;
 
 export const registerFetch = async (data) => {
   const fetchURL = `${baseURL}/users`
@@ -39,8 +40,8 @@ export const loginFetch = async (data, setUserInfo) => {
   .then(response => {
     console.log('Response data:', response.data);
     Cookies.set('token',response.headers.get('Authorization').split(" ")[1], { expires: 7 });
-    Cookies.set('userInfo', JSON.stringify({"id":response.data.user.id, "email":response.data.user.email}), { expires: 7 });
-    setUserInfo({"id":response.data.user.id, "email":response.data.user.email, "token":Cookies.get('token')});
+    Cookies.set('userInfo', JSON.stringify({"id":response.data.user.id, "email":response.data.user.email, "is_admin":response.data.user.is_admin}), { expires: 7 });
+    setUserInfo({"id":response.data.user.id, "email":response.data.user.email, "token":Cookies.get('token'), "is_admin":response.data.user.is_admin});
     return response.data
   })
   .catch(error => {
@@ -72,12 +73,6 @@ export const logoutFetch = async (setUserInfo) => {
     throw error;
   });
 }
-
-
-
-
-
-
 
 export const forgotPasswordFetch = async (data) => {
   const fetchURL = `${baseURL}/password/forgot`
@@ -135,8 +130,8 @@ export const changeProfileFetch = async (data, userID, setUserInfo) => {
     )
   .then(response => {
     console.log('Response data:', response.data);
-    Cookies.set("userInfo", JSON.stringify({ id: response.data.id, email: response.data.email }), { expires: 7 });
-    setUserInfo({id: response.data.id, email: response.data.email, token: Cookies.get("token")});
+    Cookies.set("userInfo", JSON.stringify({ id: response.data.id, email: response.data.email, "is_admin":response.data.is_admin }), { expires: 7 });
+    setUserInfo({id: response.data.id, email: response.data.email, token: Cookies.get("token"), "is_admin":response.data.is_admin});
     return response.data
   })
   .catch(error => {
