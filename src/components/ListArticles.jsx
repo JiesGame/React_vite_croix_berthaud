@@ -11,7 +11,7 @@ export const ListArticles = () => {
 
   return (
     <div className="font-semibold">
-      <h1 className="text-center">Dernières actualités</h1>
+      <h1 className="text-center font-bold text-5xl my-16 primary">Dernières actualités</h1>
       {dataArticles.map((article) => (
         <Article
           key={article.id}
