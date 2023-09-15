@@ -39,23 +39,28 @@ export const DeleteProfile = () => {
   };
 
   return (
-    <div className="flex items-center justify-center ">
-      <div className="w-[26rem]">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="flex items-center justify-center my-14">
+      <div className="w-[30rem] h-fit">
+        <form className="bg-white shadow-lg rounded h-full py-2 border-[1px] border-t">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Mot de passe actuel
-            </label>
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-              type="password"
-              placeholder="Mot de passe..."
-              {...register("current_password")}
-            />
-            {errors.current_password?.message && (<p className="text-red-500 text-xs">{errors.current_password?.message}</p>)}
+            <div className='px-10 mt-4'>
+              <p className="primary font-semibold mb-6">
+                Afin de confirmer la suppression de votre profil, merci d'indiquer votre mot de passe actuel.
+              </p>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium"
+                type="password"
+                placeholder="Mot de passe..."
+                {...register("current_password")}
+              />
+              {errors.current_password?.message && (<p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.current_password?.message}</p>)}
+            </div>
           </div>
-          <div className="flex justify-center mb-4">
-            <input className="bg-red-500 hover:bg-red-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleDeleteClick} value="Supprimer le profil"/>
+          <p className="font-bold text-center text-red-500">
+            Attention cette action est irréversible !
+          </p>
+          <div className="flex justify-around items-center mb-8 mt-6">
+            <input className="cursor-pointer bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline w-fit text-center" onClick={handleDeleteClick} value="Supprimer le profil"/>
           </div>
           {isDeleteConfirmation && (
             <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -63,7 +68,7 @@ export const DeleteProfile = () => {
                 <p className="mb-4">Êtes-vous sûr de vouloir supprimer votre profil ?</p>
                 <div className="flex justify-end">
                   <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2"
+                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2"
                     onClick={handleSubmit(onSubmit)}
                   >
                     Oui
