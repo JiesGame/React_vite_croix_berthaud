@@ -41,7 +41,6 @@ export const Navbar = () => {
     return (
       <>
         <nav className="primary-bg w-full">
-          {/* top bar */}
           <div className="flex">
             <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR">
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2" />
@@ -94,7 +93,6 @@ export const Navbar = () => {
               }
             </div>
           </div>
-          {/* banner */}
           <Link to="/" data-te-dropdown-item-ref >
             <div className="dark-bg flex justify-between w-full">
               <img src={logo} alt="logoSM" className="block sm:hidden w-[350px] py-3 m-auto" />
@@ -104,7 +102,6 @@ export const Navbar = () => {
               </div>
             </div>
           </Link>
-          {/* bottom bar */}
           <div className="md:hidden">
             <div className="dark-bg pl-2">
               <button className="text-white hover:text-gray-300 focus:outline-none" onClick={toggleBurger}>
@@ -121,7 +118,6 @@ export const Navbar = () => {
             <a className="pr-[1%] lg:pr-[6%] 2xl:pr-[9%] cursor-pointer">News</a>
           </div>
           <div className="primary-bg w-full h-3" />
-          {/* end */}
         </nav>
       </>
     );
