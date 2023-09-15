@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
-// const baseURL = import.meta.env.VITE_API_URL;
+// const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const usersFetch = async (setUsersData) => {
   const fetchURL = `${baseURL}/users`
@@ -17,6 +17,47 @@ export const usersFetch = async (setUsersData) => {
   .then(response => {
     console.log('Response data:', response.data);
     setUsersData(response.data)
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const userFetch = async (id, setInfoDeleteUSer) => {
+  const fetchURL = `${baseURL}/users/${id}`
+  return axios.get(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
+    setInfoDeleteUSer({id:response.data.id,email:response.data.email})
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const userAdminDeleteFetch = async (id) => {
+  const fetchURL = `${baseURL}/admin/user_destroy_by_admin/${id}`
+  return axios.delete(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
