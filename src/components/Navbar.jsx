@@ -43,7 +43,7 @@ export const Navbar = () => {
         <nav className="primary-bg w-full">
           {/* top bar */}
           <div className="flex">
-            <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR">
+            <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR" target="_blank" rel="noopener noreferrer">
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2" />
             </a>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
