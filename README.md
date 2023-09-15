@@ -43,3 +43,7 @@ Installé :
     PropTypes
 
     pnpm install --save prop-types
+
+    file-saver
+
+    moment
