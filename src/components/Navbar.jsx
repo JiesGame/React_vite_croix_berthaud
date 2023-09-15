@@ -68,7 +68,7 @@ export const Navbar = () => {
                   }
                   {isLoggedIn &&
                   <>
-                    { userInfo.is_admin &&
+                    { userInfo?.is_admin &&
                       <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
                         <Link to="/admin_home">Administration</Link>
                       </li>
