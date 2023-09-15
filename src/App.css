@@ -116,3 +116,8 @@ footer a:hover {
 .rate > label:hover ~ input:checked ~ label {
   color: #0DFDFF;
 }
+
+.logo:hover {
+  background-color: #052130;
+  border-radius: 100%;
+}
