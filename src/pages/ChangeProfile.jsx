@@ -126,7 +126,7 @@ export const ChangeProfile = () => {
           <div className="flex justify-center mt-8">
             <input
               type="submit"
-              className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline cursor-pointer mb-10"
+              className="button primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline cursor-pointer mb-10"
               value="Mettre à jour"
             />
           </div>

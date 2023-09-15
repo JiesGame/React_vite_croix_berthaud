@@ -59,7 +59,7 @@ export const Login = () => {
             </div>
           </div>
           <div className="flex justify-around items-center mb-8 mt-8">
-            <input type="submit" className="primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="Connexion"/>
+            <input type="submit" className="cursor-pointer primary-bg button text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline" value="Connexion"/>
             <Link to="/forgot_password" className="font-medium text-md primary hover:underline">
               Mot de passe oublié ?
             </Link>

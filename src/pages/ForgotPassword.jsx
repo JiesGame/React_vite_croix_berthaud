@@ -44,7 +44,7 @@ export const ForgotPassword = () => {
               </div>
           </div>
           <div className="flex justify-around items-center mb-8 mt-8">
-            <input type="submit" className="primary-bg text-white font-bold py-2 px-4 w-fit rounded focus:outline-none focus:shadow-outline" value="Demander un lien de réinitialisation"/>
+            <input type="submit" className="button cursor-pointer primary-bg text-white font-bold py-2 px-4 w-fit rounded focus:outline-none focus:shadow-outline" value="Demander un lien de réinitialisation"/>
           </div>
           <div>
             <div className='px-6 mb-2'>
