@@ -15,13 +15,15 @@ export const ShowArticle = () => {
   
   return (
     <div>
-      <Article 
-        id={dataArticle.id}
-        title={dataArticle.title}
-        content={dataArticle.content}
-        isLinkVisible={false}
-        created_at={dataArticle.created_at}
-      />
+      {dataArticle.created_at &&
+        <Article 
+          id={dataArticle.id}
+          title={dataArticle.title}
+          content={dataArticle.content}
+          isLinkVisible={false}
+          created_at={dataArticle.created_at}
+        />
+      }
     </div>
   )
 }

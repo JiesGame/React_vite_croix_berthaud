@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "../store/atoms";
 import { DeleteArticleButton } from "./DeleteArticleButton";
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
 
 export const Article = (props) => {
@@ -21,7 +21,7 @@ export const Article = (props) => {
         <div className="border-2 rounded-lg shadow-lg w-full h-fit my-10">
           <div className="primary-bg rounded-t py-3">
             <p className="text-white ml-[1.5%] font-normal">
-              Mis en ligne le, {formattedDate}
+              Mis en ligne le {formattedDate}
             </p>
           </div>
           <div>
@@ -55,25 +55,25 @@ export const Article = (props) => {
           )}
           <div className="flex md:justify-between md:flex-row md:items-center primary-bg text-white rounded-b py-1 flex-col items-center">
             <div className="ml-[1.5%]">
-              <div class="rate">
+              <div className="rate">
                 <input type="radio" id="star5" name="rate" value="5" />
-                <label for="star5" title="text">
+                <label htmlFor="star5" title="text">
                   5 stars
                 </label>
                 <input type="radio" id="star4" name="rate" value="4" />
-                <label for="star4" title="text">
+                <label htmlFor="star4" title="text">
                   4 stars
                 </label>
                 <input type="radio" id="star3" name="rate" value="3" />
-                <label for="star3" title="text">
+                <label htmlFor="star3" title="text">
                   3 stars
                 </label>
                 <input type="radio" id="star2" name="rate" value="2" />
-                <label for="star2" title="text">
+                <label htmlFor="star2" title="text">
                   2 stars
                 </label>
                 <input type="radio" id="star1" name="rate" value="1" />
-                <label for="star1" title="text">
+                <label htmlFor="star1" title="text">
                   1 star
                 </label>
               </div>
