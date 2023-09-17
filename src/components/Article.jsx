@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "../store/atoms";
 import { DeleteArticleButton } from "./DeleteArticleButton";
-import { format, isValid } from 'date-fns';
+import { format } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
 
 export const Article = (props) => {
