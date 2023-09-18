@@ -6,6 +6,13 @@ import { userAtom } from "../store/atoms";
 import { DeleteArticleButton } from "./DeleteArticleButton";
 import { format } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import { toastInfo } from '../services/toast';
+import { Comments } from "./Comments";
+import { commentsFetch } from "../services/axiosComment";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 
 export const Article = (props) => {
   const [userInfo] = useAtom(userAtom);
@@ -14,6 +21,33 @@ export const Article = (props) => {
   const articleID = props.id;
   const isLinkVisible = props.isLinkVisible;
   const formattedDate = format(new Date(props.created_at), "dd MMMM yyyy", { locale: frLocale });
+  const [isCommentDropdownVisible, setIsCommentDropdownVisible] = useState('');
+  const [comments, setComments] = useState([]);
+
+  const handleCommentClick = (e) => {
+    e.preventDefault();
+    const token = Cookies.get('token');
+
+    if (token) {
+      setIsCommentDropdownVisible(!isCommentDropdownVisible);
+    } else {
+      toastInfo("Vous devez être connecté pour effectuer cette action.");
+    }
+  };
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await commentsFetch(articleID);
+        setComments(response);
+      } catch (error) {
+        console.error('Error:', error);
+        throw error;
+      }
+    };
+  
+    fetchComments();
+  }, [articleID]);
 
   return (
     <div className="text-center">
@@ -78,11 +112,13 @@ export const Article = (props) => {
                 </label>
               </div>
             </div>
-            <a href="#" className="hover:underline mr-[1.5%] font-normal flex items-center mb-2">
-              Laisser un commentaire
+            <a href="#" className="mr-[1.5%] font-normal flex items-center mb-2" onClick={handleCommentClick}>
+            <FontAwesomeIcon icon={faCommentDots} />
+            <p className="mx-2">{comments.length}</p>
             </a>
           </div>
         </div>
+        {isCommentDropdownVisible && <Comments articleID={articleID}/>}
       </div>
     </div>
   );
