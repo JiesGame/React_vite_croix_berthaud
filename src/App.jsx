@@ -23,6 +23,7 @@ import { AdminCreateActivity } from "./pages/admin/AdminCreateActivity";
 import { ShowArticle } from "./pages/ShowArticle";
 import { AdminCreateArticle } from "./pages/admin/AdminCreateArticle";
 import { AdminEditArticle } from "./pages/admin/AdminEditArticle";
+import { Donation } from "./pages/Donation";
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
             <Route path='article/:id' element={<ShowArticle />}/>
             <Route path='user_charter' element={<UserCharter />} />
             <Route path='cgu' element={<Cgu />} />
+            <Route path="donation" element={<Donation />} />
           </Routes>
         </Layout>
       </Router>
