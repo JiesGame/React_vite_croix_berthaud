@@ -10,9 +10,7 @@ import { userAtom } from '../store/atoms';
 export const Login = () => {
   const schema = yup.object().shape({
     email: yup.string().required("L'email est requis."),
-    password: yup.string().required("Le mot de passe est requis."),
-    confirmationCGU: yup.bool().oneOf([true], "Vous devez accepter les conditions générales d'utilisation.")
-
+    password: yup.string().required("Le mot de passe est requis.")
   });
 
   const {register, handleSubmit, formState: {errors} } = useForm({
