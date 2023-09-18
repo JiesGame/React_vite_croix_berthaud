@@ -148,3 +148,23 @@ export const updateArticleFetch = async (data, id) => {
     throw error;
   });
 };
+
+export const deleteCommentFetch = async (articleID, commentID) => {
+  const fetchURL = `${baseURL}/articles/${articleID}/comments/${commentID}`;
+  return axios.delete(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
