@@ -46,4 +46,7 @@ Installé :
 
     file-saver
 
-    moment
+    date-fns
+
+    stripe
+    pnpm install @stripe/react-stripe-js @stripe/stripe-js
