@@ -42,8 +42,8 @@ export const Footer = () => {
         {isMobile ? (
           <div className="w-full">
             <div className="text-center">
-              <p className="font-semibold ml-5 mt-1 sm:ml-0 mb-3 sm:mb-[-12px]">Maison de quartier - La Croix Berthaud</p>
-              <p className="font-semibold ml-5 mt-2 sm:ml-0 mb-3 sm:mb-[-12px]">Square Henri Dunant, 42400 Saint-Chamond</p>
+              <p className="font-semibold lg:ml-5 mt-1 sm:ml-0 mb-3 text-sm md:text-medium">Maison de quartier - La Croix Berthaud</p>
+              <p className="font-semibold lg:ml-5 mt-2 sm:ml-0 mb-3 text-sm md:text-medium">Square Henri Dunant, 42400 Saint-Chamond</p>
               <hr className="mt-6" />
             </div>
             <div className= "flex flex-col-reverse">

@@ -15,7 +15,6 @@ import { AdminRoutes } from "./services/AdminRoutes";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DeleteProfile } from "./pages/DeleteProfile";
-import { AdminHome } from "./pages/admin/AdminHome";
 import { AdminUsers } from "./pages/admin/AdminUsers";
 import { AdminArticles } from "./pages/admin/AdminArticles"
 import { AdminActivities } from "./pages/admin/AdminActivities";
@@ -34,7 +33,6 @@ function App() {
         <Layout>
           <Routes>
             <Route element={<AdminRoutes/>}>
-              <Route path='admin_home' element={<AdminHome />} />
               <Route path='admin_users' element={<AdminUsers />}/>
               <Route path='admin_articles' element={<AdminArticles />}/>
               <Route path='admin_create_article' element={<AdminCreateArticle />}/>
