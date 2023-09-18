@@ -49,7 +49,7 @@ export const Navbar = () => {
       <>
         <nav className="primary-bg w-full">
           <div className="flex">
-            <a onClick={handleHyperLink} rel="noopener noreferrer">
+            <a onClick={handleHyperLink} rel="noopener noreferrer" className="hidden sm:block">
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2 fbiconNav cursor-pointer" />
             </a>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
@@ -58,7 +58,7 @@ export const Navbar = () => {
               <div className="whitespace-nowrap select-none" data-te-dropdown-ref>
                 <a className="flex items-center hidden-arrow whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none gap-1" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
                   {!isMobile && (
-                    (isLoggedIn ? <p className="light-bg pb-[6px] pt-[8px] px-[20px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Mon compte</p> : <p className="light-bg pb-[6px] pt-[8px] px-[14px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Nous rejoindre</p>)
+                    (isLoggedIn ? <p className="light-bg pb-[6px] pt-[8px] sm:px-[20px] px-[10px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Mon compte</p> : <p className="light-bg pb-[6px] pt-[8px]  sm:px-[14px] px-[7px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Nous rejoindre</p>)
                   )}
                 </a>
                 <ul className="absolute left-0 right-auto hidden list-none overflow-hidden border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
@@ -76,7 +76,7 @@ export const Navbar = () => {
                   <>
                     { userInfo?.is_admin &&
                       <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
-                        <Link to="/admin_home">Administration</Link>
+                        <Link to="/admin_articles">Administration</Link>
                       </li>
                     }
                     <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
@@ -94,7 +94,7 @@ export const Navbar = () => {
                   Nouvel article
                 </Link>
               :
-              <a href="*" className="light mt-2 pb-[6px] px-[14px] koulen font-medium hover:text-[#052130]">
+              <a href="*" className="light mt-2 pb-[6px] sm:px-[14px] px-[7px] koulen font-medium hover:text-[#052130]">
                 Faire un don
               </a>
               }
