@@ -94,9 +94,9 @@ export const Navbar = () => {
                   Nouvel article
                 </Link>
               :
-              <a href="*" className="light mt-2 pb-[6px] sm:px-[14px] px-[7px] koulen font-medium hover:text-[#052130]">
+              <Link to="/donation" className="light mt-2 pb-[6px] sm:px-[14px] px-[7px] koulen font-medium hover:text-[#052130]">
                 Faire un don
-              </a>
+              </Link>
               }
             </div>
           </div>
