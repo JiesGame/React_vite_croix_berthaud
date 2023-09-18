@@ -6,6 +6,13 @@ import { userAtom } from "../store/atoms";
 import { DeleteArticleButton } from "./DeleteArticleButton";
 import { format } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
+import { useState } from "react";
+import Cookies from "js-cookie";
+import { toastInfo } from '../services/toast';
+import { CommentForm } from "./CommentForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { ListComments } from "./ListComments";
 
 export const Article = (props) => {
   const [userInfo] = useAtom(userAtom);
@@ -14,6 +21,19 @@ export const Article = (props) => {
   const articleID = props.id;
   const isLinkVisible = props.isLinkVisible;
   const formattedDate = format(new Date(props.created_at), "dd MMMM yyyy", { locale: frLocale });
+  const [isCommentDropdownVisible, setIsCommentDropdownVisible] = useState('');
+
+  const handleCommentClick = (e) => {
+    e.preventDefault();
+    const token = Cookies.get('token');
+
+    if (token) {
+      setIsCommentDropdownVisible(!isCommentDropdownVisible);
+    } else {
+      toastInfo("Vous devez être connecté pour effectuer cette action.");
+    }
+  };
+
 
   return (
     <div className="text-center">
@@ -78,11 +98,14 @@ export const Article = (props) => {
                 </label>
               </div>
             </div>
-            <a href="#" className="hover:underline mr-[1.5%] font-normal flex items-center mb-2">
-              Laisser un commentaire
+            <a href="#" className="mr-[1.5%] font-normal flex items-center mb-2" onClick={handleCommentClick}>
+            <FontAwesomeIcon icon={faCommentDots} />
+            <p className="hover:underline ml-2">Laisser un commentaire</p>
             </a>
           </div>
+          <ListComments articleID={articleID}/>
         </div>
+        {isCommentDropdownVisible && <CommentForm articleID={articleID}/>}
       </div>
     </div>
   );
