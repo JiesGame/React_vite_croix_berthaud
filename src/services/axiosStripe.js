@@ -3,10 +3,11 @@ import axios from 'axios';
 // const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
 const baseURL = import.meta.env.VITE_API_URL;
 
-export const donationFetch = async (data) => {
-  const fetchURL = `${baseURL}/payment/create`
+export const donationFetch = async (data, setStripeURL) => {
+  const fetchURL = `${baseURL}/checkout/create`
+  const fetchBody = data
   return axios.post(
-    fetchURL,{
+    fetchURL,fetchBody, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -14,6 +15,7 @@ export const donationFetch = async (data) => {
   )
   .then(response => {
     console.log('Response data:', response.data);
+    setStripeURL(response.data.url)
     return response.data
   })
   .catch(error => {

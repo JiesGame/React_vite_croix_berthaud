@@ -1,16 +1,33 @@
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
-import { CheckoutForm } from '../components/CheckoutForm';
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51N8ifAGS0bW29qByBYwRtuoJNhpU1bugSBLnyi6HS0PmEROXzxlUMP9zBgyXAgtJERAxt9Rcifz6bEqXbrSDUwRL00Ozddaz0l');
+import { useState, useEffect } from "react";
+import { donationFetch } from "../services/axiosStripe";
 
 export const Donation = () => {
+  const [amount, setAmount] = useState("");
+  const [stripeURL, setStripeURL] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    amount < 0 ? setAmount(0) : amount;
+    handlePayment(amount);
+  };
+  const handlePayment = () => {
+    const data = JSON.stringify({"Amount":amount})
+    donationFetch(data, setStripeURL);
+  }
+  useEffect(() => {
+    if (stripeURL) {
+      window.location.href = stripeURL;
+    }
+  }, [stripeURL]);
 
   return (
-    <Elements stripe={stripePromise}>
-      <CheckoutForm />
-    </Elements>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="number"
+        placeholder="Montant (en euros)"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+      <button type="submit">Payer avec Stripe</button>
+    </form>
   );
 };
