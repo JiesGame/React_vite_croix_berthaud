@@ -6,13 +6,13 @@ import { userAtom } from "../store/atoms";
 import { DeleteArticleButton } from "./DeleteArticleButton";
 import { format } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Cookies from "js-cookie";
 import { toastInfo } from '../services/toast';
-import { Comments } from "./Comments";
-import { commentsFetch } from "../services/axiosComment";
+import { CommentForm } from "./CommentForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { ListComments } from "./ListComments";
 
 export const Article = (props) => {
   const [userInfo] = useAtom(userAtom);
@@ -22,7 +22,6 @@ export const Article = (props) => {
   const isLinkVisible = props.isLinkVisible;
   const formattedDate = format(new Date(props.created_at), "dd MMMM yyyy", { locale: frLocale });
   const [isCommentDropdownVisible, setIsCommentDropdownVisible] = useState('');
-  const [comments, setComments] = useState([]);
 
   const handleCommentClick = (e) => {
     e.preventDefault();
@@ -35,19 +34,6 @@ export const Article = (props) => {
     }
   };
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const response = await commentsFetch(articleID);
-        setComments(response);
-      } catch (error) {
-        console.error('Error:', error);
-        throw error;
-      }
-    };
-  
-    fetchComments();
-  }, [articleID]);
 
   return (
     <div className="text-center">
@@ -114,11 +100,12 @@ export const Article = (props) => {
             </div>
             <a href="#" className="mr-[1.5%] font-normal flex items-center mb-2" onClick={handleCommentClick}>
             <FontAwesomeIcon icon={faCommentDots} />
-            <p className="mx-2">{comments.length}</p>
+            <p className="hover:underline ml-2">Laisser un commentaire</p>
             </a>
           </div>
+          <ListComments articleID={articleID}/>
         </div>
-        {isCommentDropdownVisible && <Comments articleID={articleID}/>}
+        {isCommentDropdownVisible && <CommentForm articleID={articleID}/>}
       </div>
     </div>
   );

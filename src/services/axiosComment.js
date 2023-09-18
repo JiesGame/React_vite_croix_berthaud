@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 // const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
 const baseURL = import.meta.env.VITE_API_URL;
 
-export const commentsFetch = async (articleID) => {
+export const commentsFetch = async (articleID, setComments) => {
   const fetchURL = `${baseURL}/articles/${articleID}/comments`
   return axios.get(
     fetchURL,{
@@ -15,6 +15,7 @@ export const commentsFetch = async (articleID) => {
   )
   .then(response => {
     console.log('Response data:', response.data);
+    setComments(response.data);
     return response.data
   })
   .catch(error => {

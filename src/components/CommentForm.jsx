@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createCommentFetch } from "../services/axiosComment";
 import PropTypes from "prop-types";
 
-export const Comments = (props) => {
+export const CommentForm = (props) => {
   const [comment, setComment] = useState('');
   const articleID = props.articleID
 
@@ -27,6 +27,6 @@ export const Comments = (props) => {
   )
 }
 
-Comments.propTypes = {
+CommentForm.propTypes = {
   articleID: PropTypes.number
 };
