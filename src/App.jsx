@@ -22,6 +22,8 @@ import { AdminCreateActivity } from "./pages/admin/AdminCreateActivity";
 import { ShowArticle } from "./pages/ShowArticle";
 import { AdminCreateArticle } from "./pages/admin/AdminCreateArticle";
 import { AdminEditArticle } from "./pages/admin/AdminEditArticle";
+import { Donation } from "./pages/Donation";
+import { ThanksForDonation } from "./pages/ThanksForDonation";
 
 function App() {
 
@@ -52,6 +54,8 @@ function App() {
             <Route path='article/:id' element={<ShowArticle />}/>
             <Route path='user_charter' element={<UserCharter />} />
             <Route path='cgu' element={<Cgu />} />
+            <Route path="donation" element={<Donation />} />
+            <Route path="thank_you" element={<ThanksForDonation />} />
           </Routes>
         </Layout>
       </Router>
