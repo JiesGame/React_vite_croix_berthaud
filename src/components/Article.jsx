@@ -13,6 +13,7 @@ import { CommentForm } from "./CommentForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import { ListComments } from "./ListComments";
+import { RatingForm } from "./RatingForm";
 
 export const Article = (props) => {
   const [userInfo] = useAtom(userAtom);
@@ -22,18 +23,19 @@ export const Article = (props) => {
   const isLinkVisible = props.isLinkVisible;
   const formattedDate = format(new Date(props.created_at), "dd MMMM yyyy", { locale: frLocale });
   const [isCommentDropdownVisible, setIsCommentDropdownVisible] = useState('');
-
   const handleCommentClick = (e) => {
     e.preventDefault();
     const token = Cookies.get('token');
-
     if (token) {
       setIsCommentDropdownVisible(!isCommentDropdownVisible);
     } else {
       toastInfo("Vous devez être connecté pour effectuer cette action.");
     }
   };
-
+  const [rating, setRating] = useState(2);
+  const handleRatingClick = (e) => {
+    setRating(e.target.value);
+  };
 
   return (
     <div className="text-center">
@@ -46,17 +48,17 @@ export const Article = (props) => {
           </div>
           <div>
             <h1 className="text-center font-semibold text-3xl py-4">
-              {isLinkVisible ? (
+              {isLinkVisible ? 
                 <p>
                   <Link to={`article/${articleID}`} className="dark font-medium">
                     {title}
                   </Link>
                 </p>
-              ) : (
+              : 
                 <p>
                   {title}
                 </p>
-              )}
+              }
             </h1>
           </div>
           <hr className="light-gray-border border-[1px] mx-[3%]" />
@@ -74,36 +76,13 @@ export const Article = (props) => {
             </div>
           )}
           <div className="flex md:justify-between md:flex-row md:items-center primary-bg text-white rounded-b py-1 flex-col items-center">
-            <div className="ml-[1.5%]">
-              <div className="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label htmlFor="star5" title="text">
-                  5 stars
-                </label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label htmlFor="star4" title="text">
-                  4 stars
-                </label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label htmlFor="star3" title="text">
-                  3 stars
-                </label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label htmlFor="star2" title="text">
-                  2 stars
-                </label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label htmlFor="star1" title="text">
-                  1 star
-                </label>
-              </div>
-            </div>
+            <RatingForm articleID={articleID} />
             <a href="#" className="mr-[1.5%] font-normal flex items-center mb-2" onClick={handleCommentClick}>
             <FontAwesomeIcon icon={faCommentDots} />
             <p className="hover:underline ml-2">Laisser un commentaire</p>
             </a>
           </div>
-          <ListComments articleID={articleID}/>
+          <ListComments articleID={articleID} handleRatingClick={handleRatingClick}/>
         </div>
         {isCommentDropdownVisible && <CommentForm articleID={articleID}/>}
       </div>
@@ -117,4 +96,5 @@ Article.propTypes = {
   content: PropTypes.string,
   isLinkVisible: PropTypes.bool,
   created_at: PropTypes.string,
+  initialRating: PropTypes.number
 };
