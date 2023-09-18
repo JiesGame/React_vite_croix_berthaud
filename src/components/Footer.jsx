@@ -53,7 +53,7 @@ export const Footer = () => {
                   </li>
                   <li>
                     <a href="#" className="text-white hover:underline font-semibold text-lg">
-                      Mentions légales
+                      CGU
                     </a>
                   </li>
                 </ul>
