@@ -6,7 +6,7 @@ import * as yup from 'yup';
 
 export const Donation = () => {
   const schema = yup.object().shape({
-    amount: yup.number().min(1, "Le montant minimum est de un euro.").required().typeError("Merci d'indiquer le montant du don en chiffre.")
+    amount: yup.number().min(1, "Le montant minimum est d'un euro.").required().typeError("Merci d'indiquer le montant du don en chiffre.")
   });
   const {register, handleSubmit, formState: {errors} } = useForm({
     resolver: yupResolver(schema)

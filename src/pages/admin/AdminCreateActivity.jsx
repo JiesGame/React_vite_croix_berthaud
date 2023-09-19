@@ -21,38 +21,62 @@ export const AdminCreateActivity = () => {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        <label htmlFor="name">Nom :</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={dataActivity.name}
-          onChange={handleChange}
-        />
+    <div className="flex items-center justify-center my-14">
+      <div className="w-[30rem] h-fit">
+        <form className="bg-white shadow-lg rounded h-full" onSubmit={onSubmit}>
+          <div className="mt-8">
+            <h1 className="flex text-2xl justify-center items-center primary-bg w-full text-white h-12 rounded-t font-semibold">
+              Création d'une activité
+            </h1>
+            <div className="px-10 mt-4">
+              <label className="block primary text-xl font-semibold mb-2" htmlFor="name">
+                Nom :
+              </label>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium dark"
+                type="text"
+                id="name"
+                name="name"
+                value={dataActivity.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="px-10 mt-4">
+              <label className="block primary text-xl font-semibold mb-2" htmlFor="price">
+                Prix :
+              </label>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium dark"
+                type="number"
+                id="price"
+                name="price"
+                min="0"
+                value={dataActivity.price}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="px-10 mt-4">
+              <label className="block primary text-xl font-semibold mb-2" htmlFor="period">
+                Période :
+              </label>
+              <input
+                className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium dark"
+                type="number"
+                id="period"
+                name="period"
+                min="2023"
+                value={dataActivity.period}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex justify-center mt-8">
+              <button className="button primary-bg text-white font-bold py-2 px-4 w-32 rounded focus:outline-none focus:shadow-outline cursor-pointer mb-10" type="submit">
+                Envoyer
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div>
-        <label htmlFor="price">Prix :</label>
-        <input
-          type="number"
-          id="price"
-          name="price"
-          value={dataActivity.price}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="period">Période :</label>
-        <input
-          type="number"
-          id="period"
-          name="period"
-          value={dataActivity.period}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Envoyer</button>
-    </form>
+    </div>
   );
 };
