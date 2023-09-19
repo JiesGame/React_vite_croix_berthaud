@@ -100,9 +100,9 @@ export const Footer = () => {
                   |
                   </li>
                   <li>
-                    <a href="#" className="text-white hover:underline font-semibold text-lg mb-1">
+                    <Link to="contact" className="text-white hover:underline font-semibold text-lg mb-1">
                       Contact
-                    </a>
+                    </Link>
                   </li>
                   <li className="md:mx-2 hidden md:inline-block mb-1">
                   |

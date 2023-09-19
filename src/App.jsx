@@ -24,6 +24,7 @@ import { AdminCreateArticle } from "./pages/admin/AdminCreateArticle";
 import { AdminEditArticle } from "./pages/admin/AdminEditArticle";
 import { Donation } from "./pages/Donation";
 import { ThanksForDonation } from "./pages/ThanksForDonation";
+import { Contact } from "./pages/Contact";
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
             <Route path='cgu' element={<Cgu />} />
             <Route path="donation" element={<Donation />} />
             <Route path="thank_you" element={<ThanksForDonation />} />
+            <Route path="contact" element={<Contact />} />
           </Routes>
         </Layout>
       </Router>
