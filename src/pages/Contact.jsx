@@ -1,4 +1,12 @@
 export const Contact = () => {
+
+  const handleHyperLinkFB = () => {
+    const confirmation = window.confirm("Voulez-vous ouvrir un nouvel onglet Facebook ?");
+    if (confirmation) {
+      window.open('https://www.facebook.com/lacroixberthaud/?locale=fr_FR', '_blank');
+    }
+  };
+
   return (
     <div className='flex items-center justify-center my-14'>
       <div className="w-[30rem] h-fit">
@@ -13,13 +21,31 @@ export const Contact = () => {
             </h2>
             <ul>
               <li className="my-2">
-                <span className="font-semibold">• téléphone</span> : 07 82 60 57 87
+                <span className="font-semibold">
+                  • téléphone
+                </span>
+                <span className="ml-2">
+                  : 07 82 60 57 87
+                </span>
               </li>
               <li className="my-2">
-                <span className="font-semibold">• mail</span> : <a href ="mailto:contact@la-croix-berthaud.fr" className="hover:underline">contact@la-croix-berthaud.fr</a>
+                <span className="font-semibold">
+                  • mail
+                </span>
+                <span className="mx-2">
+                  :
+                </span> 
+                <a href ="mailto:contact@la-croix-berthaud.fr" className="hover:underline card_link">
+                  contact@la-croix-berthaud.fr
+                </a>
               </li>
               <li className="my-2">
-                <span className="font-semibold">• nous écrire à l'adresse suivante</span> :
+                <span className="font-semibold">
+                  • nous écrire à l'adresse suivante
+                </span>
+                <span className="mx-2">
+                  :
+                </span> 
                 <p className="pl-4 mt-2">
                   Square Henri Dunant
                 </p>
@@ -27,8 +53,19 @@ export const Contact = () => {
                   42400 Saint-Chamond
                 </p>
               </li>
+              <li className="my-2 flex">
+                <span className="font-semibold">
+                  • Facebook
+                </span>
+                <span className="mx-2">
+                  :
+                </span>  
+                <a onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer dark hover:underline card_link">
+                  www.facebook.com/lacroixberthaud
+                </a>
+              </li>
             </ul>
-            <p className="pb-6">Vous pouvez également venir au moment d'une activité</p>
+            <p className="py-6">Vous pouvez également venir au moment d'une activité</p>
             </div>
           </div>
         </div>

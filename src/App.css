@@ -20,6 +20,10 @@
   color: #059DE0;
 }
 
+.card_link:hover {
+  color: #059DE0;
+}
+
 .secondary-bg {
   background-color: #059DE0;
 }
