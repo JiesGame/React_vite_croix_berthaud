@@ -68,8 +68,12 @@ footer a:hover {
   color: #052130;
 }
 
-.navbar a:hover {
+.navbar article:hover {
   color: #0DFDFF;
+}
+
+.navbar a:hover {
+  color: #052130;
 }
 
 .download:hover {
@@ -129,3 +133,10 @@ footer a:hover {
 .fbiconNav:hover {
   filter: invert(5) saturate(0) brightness(10);
 }
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+}
+

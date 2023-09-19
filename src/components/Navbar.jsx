@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Collapse, Dropdown, initTE } from "tw-elements";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/img/logo.svg";
@@ -21,6 +21,8 @@ export const Navbar = () => {
   const isLoggedIn = Cookies.get('token') !== undefined ? true : false;
   const [isMobile, setIsMobile] = useState(false);
   const [isBurger, setIsBurger] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownTimeoutRef = useRef(null);
 
   useEffect(() => {
     initTE({ Collapse, Dropdown });
@@ -43,6 +45,46 @@ export const Navbar = () => {
   const toggleBurger = () => {
     setIsBurger(!isBurger);
   }
+
+  const [dropdownStates, setDropdownStates] = useState({
+    communityCenterID: false,
+    programID: false,
+    onDisplayID: false,
+    childActivitiesID: false,
+    adultActivitiesID: false,
+    NewsID: false
+  });
+
+  const handleDropdownClick = (articleId) => {
+    setDropdownStates((prevState) => {
+      const updatedStates = {};
+      Object.keys(prevState).forEach((key) => {
+        updatedStates[key] = key === articleId ? !prevState[key] : false;
+      });
+      return updatedStates;
+    });
+    clearTimeout(dropdownTimeoutRef.current);
+  };
+  
+  const handleMouseEnter = (articleId) => {
+    setDropdownStates((prevState) => {
+      const updatedStates = {};
+      Object.keys(prevState).forEach((key) => {
+        updatedStates[key] = key === articleId;
+      });
+      return updatedStates;
+    });
+    clearTimeout(dropdownTimeoutRef.current);
+  };
+  
+  const handleMouseLeave = (articleId) => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setDropdownStates((prevState) => ({
+        ...prevState,
+        [articleId]: false
+      }));
+    }, 1000);
+  };
 
   if (!isNotFoundPage) {
     return (
@@ -116,13 +158,91 @@ export const Navbar = () => {
               </button>
             </div>
           </div>
-          <div className={`md:flex dark-bg pl-[1%] white flex whitespace-nowrap justify-between text-lg lg:text-xl pb-2 navbar ${isBurger ? "block flex-col md:flex-row" : "hidden"}`}>
-            <a className="lg:ml-[6%] 2xl:ml-[9%] cursor-pointer">Maison de quartier</a>
-            <a className="cursor-pointer">Programme</a>
-            <a className="cursor-pointer">A l'affiche</a>
-            <a className="cursor-pointer">Activités enfants</a>
-            <a className="cursor-pointer">Activités adultes</a>
-            <a className="pr-[1%] lg:pr-[6%] 2xl:pr-[9%] cursor-pointer">News</a>
+          <div className={`navbar md:flex dark-bg pl-[1%] white flex whitespace-nowrap justify-between text-lg lg:text-xl ${isBurger ? "block flex-col md:flex-row" : "hidden"}`}>
+            <article
+              className="lg:ml-[6%] 2xl:ml-[9%] pb-4 cursor-pointer"
+              onClick={() => handleDropdownClick('communityCenterID')}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={() => handleMouseLeave('communityCenterID')}
+            >
+              Maison de quartier
+              {dropdownStates.communityCenterID && (
+                <div className="dropdown-content mt-2 cursor-pointer w-full left-0 px-2 primary-bg">
+                  <Link to="/" className="block lg:ml-[6%] 2xl:ml-[9%]">test 1</Link>
+                  <Link to="404" className="block lg:ml-[6%] 2xl:ml-[9%]">test 2</Link>
+                </div>
+              )}
+            </article>
+            <article
+              className="cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('programID')}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={() => handleMouseLeave('programID')}
+            >
+              Programme
+              {dropdownStates.programID && (
+                <div className="dropdown-content cursor-pointer">
+                  <Link to="/" className="block">test 1</Link>
+                  <Link to="404" className="block">test 2</Link>
+                </div>
+              )}
+            </article>
+            <article
+              className="cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('onDisplayID')}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={() => handleMouseLeave('onDisplayID')}
+            >
+              A l'affiche
+              {dropdownStates.onDisplayID && (
+                <div className="dropdown-content cursor-pointer">
+                  <Link to="/" className="block">test 1</Link>
+                  <Link to="404" className="block">test 2</Link>
+                </div>
+              )}
+            </article>
+            <article
+              className="cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('childActivitiesID')}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={() => handleMouseLeave('childActivitiesID')}
+            >
+              Activités enfants
+              {dropdownStates.childActivitiesID && (
+                <div className="dropdown-content cursor-pointer">
+                  <Link to="/" className="block">test 1</Link>
+                  <Link to="404" className="block">test 2</Link>
+                </div>
+              )}
+            </article>
+            <article
+              className="cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('adultActivitiesID')}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={() => handleMouseLeave('adultActivitiesID')}
+            >
+              Activités adultes
+              {dropdownStates.adultActivitiesID && (
+                <div className="dropdown-content cursor-pointer">
+                  <Link to="/" className="block">test 1</Link>
+                  <Link to="404" className="block">test 2</Link>
+                </div>
+              )}
+            </article>
+            <article
+              className="lg:mr-[6%] 2xl:mr-[9%] cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('NewsID')}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={() => handleMouseLeave('NewsID')}
+            >
+              News
+              {dropdownStates.NewsID && (
+                <div className="dropdown-content cursor-pointer">
+                  <Link to="/" className="block">test 1</Link>
+                  <Link to="404" className="block">test 2</Link>
+                </div>
+              )}
+            </article>
           </div>
           <div className="primary-bg w-full h-3" />
         </nav>
