@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { toastInfo, toastError, toastSuccess } from './toast';
 
 // const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
 const baseURL = import.meta.env.VITE_API_URL;
@@ -167,4 +168,55 @@ export const deleteCommentFetch = async (articleID, commentID) => {
     console.error('Error:', error);
     throw error;
   });
+};
+
+export const createActivityFetch = async (data, navigate) => {
+  const fetchURL = `${baseURL}/activities`;
+  const fetchBody = data;
+  try {
+    const response = await axios.post(
+    fetchURL, fetchBody, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    });
+    if (response.status === 201) {
+      toastSuccess("L'activité a été créée.");
+      navigate('/admin_activities');
+    } else if (response.status === 401) {
+      toastError("Vous n'êtes pas administrateur.");
+    } else {
+      toastError("Création impossible.");
+    }
+    return response.data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
+export const updateActivityFetch = async (id, data) => {
+  const fetchURL = `${baseURL}/activities/${id}`;
+  const fetchBody = data;
+  try {
+    const response = await axios.put(
+    fetchURL, fetchBody, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    });
+    if (response.status === 200) {
+      toastSuccess("L'activité a été mis à jour.");
+    } else if (response.status === 401) {
+      toastError("Vous n'êtes pas administrateur.");
+    } else {
+      toastError("Mise à jour impossible.");
+    }
+    return response.data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
 };
