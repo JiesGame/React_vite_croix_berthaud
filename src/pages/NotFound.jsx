@@ -8,7 +8,7 @@ export const NotFound = () => {
   return (
     <>
       <div id="NotFound" className='font-sans'>
-        <img className='w-full h-screen object-cover' src='../src/assets/img/bg.jpg' />
+        <img className='w-full h-screen object-cover' src='../src/assets/img/bg.webp' />
         <div className='w-full h-screen absolute top-0 left-0'>
           <section className='max-w-[700px] m-auto h-full w-full flex flex-col justify-center items-center'>
             <div className='text-white text-9xl font-bold flex gap-4'>
