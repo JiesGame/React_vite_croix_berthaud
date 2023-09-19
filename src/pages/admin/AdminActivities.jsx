@@ -10,9 +10,6 @@ export const AdminActivities = () => {
     listActivitiesFetch(setDataActivities);
   },[])
 
-  const handleEditClick = (id) => {
-    console.log('rien')
-  }
   return (
     <>
       <AdminPanel />
@@ -40,7 +37,7 @@ export const AdminActivities = () => {
                   <td>{activity.price}</td>
                   <td className="hidden sm:block">{activity.period}</td>
                   <td>
-                    <button className="primary-bg button text-white font-bold py-2 sm:px-4 px-2 rounded focus:outline-none focus:shadow-outline" onClick={() => handleEditClick(activity.id)}>Editer</button>
+                      <Link to={`/admin_edit_activity/${activity.id}`} className="primary-bg button text-white font-bold py-2 sm:px-4 px-2 rounded focus:outline-none focus:shadow-outline">Editer</Link>
                   </td>
                 </tr>
               ))}

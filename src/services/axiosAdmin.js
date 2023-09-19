@@ -196,7 +196,25 @@ export const createActivityFetch = async (data, navigate) => {
   }
 };
 
-export const updateActivityFetch = async (id, data) => {
+export const showActivityFetch = async (id, setDataActivity) => {
+  const fetchURL = `${baseURL}/activities/${id}`;
+  try {
+    const response = await axios.get(
+    fetchURL, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    });
+    setDataActivity(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
+export const updateActivityFetch = async (id, data, navigate) => {
   const fetchURL = `${baseURL}/activities/${id}`;
   const fetchBody = data;
   try {
@@ -209,6 +227,7 @@ export const updateActivityFetch = async (id, data) => {
     });
     if (response.status === 200) {
       toastSuccess("L'activité a été mis à jour.");
+      navigate('/admin_activities')
     } else if (response.status === 401) {
       toastError("Vous n'êtes pas administrateur.");
     } else {

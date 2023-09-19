@@ -22,6 +22,7 @@ import { AdminCreateActivity } from "./pages/admin/AdminCreateActivity";
 import { ShowArticle } from "./pages/ShowArticle";
 import { AdminCreateArticle } from "./pages/admin/AdminCreateArticle";
 import { AdminEditArticle } from "./pages/admin/AdminEditArticle";
+import { AdminEditActivity } from "./pages/admin/AdminEditActivity";
 import { Donation } from "./pages/Donation";
 import { ThanksForDonation } from "./pages/ThanksForDonation";
 import { Contact } from "./pages/Contact";
@@ -40,6 +41,7 @@ function App() {
               <Route path='admin_edit_article/:id' element={<AdminEditArticle />}/>
               <Route path='admin_activities' element={<AdminActivities />}/>
               <Route path='admin_create_activity' element={<AdminCreateActivity />}/>
+              <Route path='admin_edit_activity/:id' element={<AdminEditActivity />}/>
             </Route>
             <Route element={<PrivateRoutes/>}>
               <Route path='change_profile' element={<ChangeProfile />}/>
