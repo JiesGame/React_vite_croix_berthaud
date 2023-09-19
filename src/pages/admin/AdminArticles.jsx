@@ -27,7 +27,7 @@ export const AdminArticles = () => {
         <div className="flex justify-center flex-col items-center">
           <Link to='../admin_create_article' className="w-[150px] primary-bg text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-cyan-300 button">Créer un article</Link>
           <div className="flex items-center">
-            <p className="mt-5 ">Afficher les : </p>
+            <p className="mt-5 ">Catégorie : </p>
           <select value={category} onChange={handleChange} className="border ml-1 px-1 mt-5 primary cursor-pointer">
             <option value="news">News</option>
             <option value="maison_de_quartier">Maison de quartier</option>
