@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import { createRatingFetch } from "../services/axiosRating";
+import Cookies from "js-cookie";
+import { toastInfo } from "../services/toast";
 
 export const RatingForm = (props) => {
   const { articleID, rating } = props;
 
   const handleRatingClick = (e) => {
     const data = JSON.stringify({"rating":{"score":e.target.value}});
-    createRatingFetch(articleID, data);
+    Cookies.get("token") ? createRatingFetch(articleID, data): toastInfo("Vous devez être connecté pour noter un article.")
   };
 
   return (
