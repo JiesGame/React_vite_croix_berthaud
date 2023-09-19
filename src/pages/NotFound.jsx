@@ -20,7 +20,7 @@ export const NotFound = () => {
               <Link to="/">
                 <button className=' text-white bg-gray-800 border-solid border-2 border-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-bold rounded-full text-center text-sm px-5 py-3 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 uppercase w-44'>accueil</button>
               </Link>
-              <Link to="#contact">
+              <Link to="../contact">
                 <button className='bg-transparent border-solid border-2 border-white text-white font-bold rounded-full text-center text-sm px-5 py-3 mr-2 mb-2 uppercase hover:text-black w-44'>contactez-nous</button>
               </Link>
             </div>
