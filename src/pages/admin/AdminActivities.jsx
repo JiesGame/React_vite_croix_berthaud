@@ -29,15 +29,15 @@ export const AdminActivities = () => {
                 <th className="pb-3">Edition</th>
               </tr>
             </thead>
-            <tbody className='white-bg'>
+            <tbody className='bg-white'>
               {dataActivities.map((activity) => (
-                <tr key={activity.id} className="text-center">
-                  <td className="hidden sm:block">{activity.id}</td>
+                <tr key={activity.id} className="text-center h-10">
+                  <td className="hidden sm:block pt-2">{activity.id}</td>
                   <td>{activity.name}</td>
-                  <td>{activity.price}</td>
+                  <td>{activity.price}€</td>
                   <td className="hidden sm:block">{activity.period}</td>
                   <td>
-                      <Link to={`/admin_edit_activity/${activity.id}`} className="primary-bg button text-white font-bold py-2 sm:px-4 px-2 rounded focus:outline-none focus:shadow-outline">Editer</Link>
+                      <Link to={`/admin_edit_activity/${activity.id}`} className="primary-bg button text-white font-bold rounded focus:outline-none focus:shadow-outline h-max p-2 px-4">Editer</Link>
                   </td>
                 </tr>
               ))}
