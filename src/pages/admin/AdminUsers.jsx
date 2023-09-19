@@ -11,7 +11,6 @@ export const AdminUsers = () => {
     usersFetch(setUsersData);
   },[]);
   const handleDeleteClick = (id) => {
-    console.log(id)
     userFetch(id, setInfoDeleteUSer);
     setIsDeleteConfirmation(true);
   };
