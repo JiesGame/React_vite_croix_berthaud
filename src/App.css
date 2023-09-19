@@ -77,7 +77,7 @@ footer a:hover {
 }
 
 .navbar a:hover {
-  color: #052130;
+  color: #0dFDFF;
 }
 
 .download:hover {
@@ -142,5 +142,6 @@ footer a:hover {
   display: block;
   position: absolute;
   z-index: 1000;
+  border-bottom: 6px solid #FFFFFF;
+  border-top: 16px solid #052130;
 }
-

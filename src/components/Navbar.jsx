@@ -21,7 +21,6 @@ export const Navbar = () => {
   const isLoggedIn = Cookies.get('token') !== undefined ? true : false;
   const [isMobile, setIsMobile] = useState(false);
   const [isBurger, setIsBurger] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownTimeoutRef = useRef(null);
 
   useEffect(() => {
@@ -158,88 +157,101 @@ export const Navbar = () => {
               </button>
             </div>
           </div>
-          <div className={`navbar md:flex dark-bg pl-[1%] white flex whitespace-nowrap justify-between text-lg lg:text-xl ${isBurger ? "block flex-col md:flex-row" : "hidden"}`}>
+          <div className={`navbar select-none	md:flex dark-bg white flex whitespace-nowrap justify-between text-lg lg:text-xl ${isBurger ? "block flex-col md:flex-row" : "hidden"}`}>
             <article
-              className="lg:ml-[6%] 2xl:ml-[9%] pb-4 cursor-pointer"
+              className="lg:ml-[6%] 2xl:ml-[9%] pb-4 cursor-pointer px-12"
               onClick={() => handleDropdownClick('communityCenterID')}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={() => handleMouseLeave('communityCenterID')}
             >
               Maison de quartier
               {dropdownStates.communityCenterID && (
-                <div className="dropdown-content mt-2 cursor-pointer w-full left-0 px-2 primary-bg">
-                  <Link to="/" className="block lg:ml-[6%] 2xl:ml-[9%]">test 1</Link>
-                  <Link to="404" className="block lg:ml-[6%] 2xl:ml-[9%]">test 2</Link>
+                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
+                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● whitespace-nowrap</Link>
+                  <Link to="/cgu" className="block white">● cursor-pointer</Link>
+                  <Link to="/user_charter" className="block white">● justify-between</Link>
+                  <Link to="/user_charter" className="block white">● primary-bg</Link>
+                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● user_charter</Link>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4"
+              className="cursor-pointer pb-4 px-12"
               onClick={() => handleDropdownClick('programID')}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={() => handleMouseLeave('programID')}
             >
               Programme
               {dropdownStates.programID && (
-                <div className="dropdown-content cursor-pointer">
-                  <Link to="/" className="block">test 1</Link>
-                  <Link to="404" className="block">test 2</Link>
+                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
+                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
+                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
+                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
+                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4"
+              className="cursor-pointer pb-4 px-12"
               onClick={() => handleDropdownClick('onDisplayID')}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={() => handleMouseLeave('onDisplayID')}
             >
               A l'affiche
               {dropdownStates.onDisplayID && (
-                <div className="dropdown-content cursor-pointer">
-                  <Link to="/" className="block">test 1</Link>
-                  <Link to="404" className="block">test 2</Link>
+                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
+                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
+                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
+                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
+                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4"
+              className="cursor-pointer pb-4 px-12"
               onClick={() => handleDropdownClick('childActivitiesID')}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={() => handleMouseLeave('childActivitiesID')}
             >
               Activités enfants
               {dropdownStates.childActivitiesID && (
-                <div className="dropdown-content cursor-pointer">
-                  <Link to="/" className="block">test 1</Link>
-                  <Link to="404" className="block">test 2</Link>
+                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
+                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
+                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
+                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
+                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4"
+              className="cursor-pointer pb-4 px-12"
               onClick={() => handleDropdownClick('adultActivitiesID')}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={() => handleMouseLeave('adultActivitiesID')}
             >
               Activités adultes
               {dropdownStates.adultActivitiesID && (
-                <div className="dropdown-content cursor-pointer">
-                  <Link to="/" className="block">test 1</Link>
-                  <Link to="404" className="block">test 2</Link>
+                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
+                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
+                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
+                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
+                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
                 </div>
               )}
             </article>
             <article
-              className="lg:mr-[6%] 2xl:mr-[9%] cursor-pointer pb-4"
+              className="lg:mr-[6%] 2xl:mr-[9%] cursor-pointer pb-4 px-12"
               onClick={() => handleDropdownClick('NewsID')}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={() => handleMouseLeave('NewsID')}
             >
               News
               {dropdownStates.NewsID && (
-                <div className="dropdown-content cursor-pointer">
-                  <Link to="/" className="block">test 1</Link>
-                  <Link to="404" className="block">test 2</Link>
+                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
+                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
+                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
+                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
+                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
                 </div>
               )}
             </article>
