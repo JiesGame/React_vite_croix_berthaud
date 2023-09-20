@@ -32,7 +32,7 @@ export const Article = (props) => {
       toastInfo("Vous devez être connecté pour effectuer cette action.");
     }
   };
-  const [rating, setRating] = useState(2);
+  const [rating, setRating] = useState('');
   const handleRatingClick = (e) => {
     setRating(e.target.value);
   };
