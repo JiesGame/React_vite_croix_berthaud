@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { toastInfo, toastError, toastSuccess } from './toast';
+import { toastError, toastSuccess } from './toast';
 
 // const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
 const baseURL = import.meta.env.VITE_API_URL;
@@ -60,27 +60,6 @@ export const userAdminDeleteFetch = async (id) => {
   .then(response => {
     console.log('Response data:', response.data);
     return response.data
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    throw error;
-  });
-};
-
-export const adminArticlesFetch = async (setDataArticles, category) => {
-  const fetchURL = `${baseURL}/admin/articles/${category}`;
-  return axios.get(
-    fetchURL,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${Cookies.get('token')}`
-      }
-    }
-  )
-  .then(response => {
-    console.log('Response data:', response.data);
-    setDataArticles(response.data.reverse());
-    return response.data;
   })
   .catch(error => {
     console.error('Error:', error);
@@ -206,7 +185,8 @@ export const showActivityFetch = async (id, setDataActivity) => {
         'Authorization': `Bearer ${Cookies.get('token')}`
       }
     });
-    setDataActivity(response.data);
+    setDataActivity({name: response.data.name, price: response.data.price,
+    period: response.data.period});
     return response.data;
   } catch (error) {
     console.error('Error:', error);
@@ -227,7 +207,7 @@ export const updateActivityFetch = async (id, data, navigate) => {
     });
     if (response.status === 200) {
       toastSuccess("L'activité a été mis à jour.");
-      navigate('/admin_activities')
+      navigate('/admin_activities');
     } else if (response.status === 401) {
       toastError("Vous n'êtes pas administrateur.");
     } else {
