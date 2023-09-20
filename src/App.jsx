@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Layout } from "./components/Layout";
 import { UserCharter } from "./pages/UserCharter";
 import { Cgu } from "./pages/Cgu";
+import { Search } from "./pages/Search";
 import './App.css';
 import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetPassword } from "./pages/ResetPassword";
@@ -60,6 +61,7 @@ function App() {
             <Route path="donation" element={<Donation />} />
             <Route path="thank_you" element={<ThanksForDonation />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="search" element={<Search />} />
           </Routes>
         </Layout>
       </Router>
