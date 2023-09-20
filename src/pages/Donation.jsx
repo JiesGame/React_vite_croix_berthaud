@@ -5,13 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 export const Donation = () => {
-  const schema = yup.object().shape({
-    amount: yup.number().min(1, "Le montant minimum est d'un euro.").required().typeError("Merci d'indiquer le montant du don en chiffre.")
-  });
-  const {register, handleSubmit, formState: {errors} } = useForm({
-    resolver: yupResolver(schema)
-  });
-  
   const [stripeURL, setStripeURL] = useState("");
   const [selectedAmount, setSelectedAmount] = useState("");
   const [customAmount, setCustomAmount] = useState("");
@@ -21,16 +14,15 @@ export const Donation = () => {
   const handleAmountSelection = (amount) => {
     setSelectedAmount(amount);
     setCustomAmount(amount);
-
     const reductionAmount = amount * 0.66;
     setReduction(reductionAmount.toFixed(2));
-
     const costAfterReduction = amount - reductionAmount;
     setRealAmount(costAfterReduction.toFixed(2));
   };
 
-  const onSubmit = async (data) => {
-    const amount = JSON.stringify({"Amount":data.amount})
+  const onSubmit = async (selectedAmount, e) => {
+    e.preventDefault();
+    const amount = JSON.stringify({"Amount":selectedAmount});
     donationFetch(amount, setStripeURL);
   }
 
@@ -45,7 +37,7 @@ export const Donation = () => {
       <div className="w-[30rem] h-fit">
         <form
           className="bg-white shadow-lg rounded h-full pb-6"
-          onSubmit={handleSubmit(onSubmit)}>
+          onSubmit={(e) => onSubmit(selectedAmount, e)}>
           <div className="mb-4">
             <h1 className="flex text-2xl justify-center items-center primary-bg w-full text-white h-12 rounded-t font-semibold uppercase">
               mon don
@@ -54,27 +46,27 @@ export const Donation = () => {
               <ul className="flex justify-between py-6 gap-4 text-center dark font-medium">
                 <li
                   className={`border-[1px] py-2 px-4 w-full shadow-lg rounded cursor-pointer ${
-                    selectedAmount === "10" ? "primary-bg text-white" : ""
+                    selectedAmount === 10 ? "primary-bg text-white" : ""
                   }`}
-                  onClick={() => handleAmountSelection("10")}>
+                  onClick={() => handleAmountSelection(10)}>
                   10 €
                 </li>
                 <li className={`border-[1px] py-2 px-4 w-full shadow-lg rounded cursor-pointer ${
-                    selectedAmount === "25" ? "primary-bg text-white" : ""
+                    selectedAmount === 25 ? "primary-bg text-white" : ""
                   }`}
-                  onClick={() => handleAmountSelection("25")}>
+                  onClick={() => handleAmountSelection(25)}>
                   25 €
                 </li>
                 <li className={`border-[1px] py-2 px-4 w-full shadow-lg rounded cursor-pointer ${
-                    selectedAmount === "50" ? "primary-bg text-white" : ""
+                    selectedAmount === 50 ? "primary-bg text-white" : ""
                   }`}
-                  onClick={() => handleAmountSelection("50")}>
+                  onClick={() => handleAmountSelection(50)}>
                   50 €
                 </li>
                 <li className={`border-[1px] py-2 px-4 w-full shadow-lg rounded cursor-pointer ${
-                    selectedAmount === "100" ? "primary-bg text-white" : ""
+                    selectedAmount === 100 ? "primary-bg text-white" : ""
                   }`}
-                  onClick={() => handleAmountSelection("100")}>
+                  onClick={() => handleAmountSelection(100)}>
                   100 €
                 </li>
               </ul>
@@ -84,7 +76,6 @@ export const Donation = () => {
                   type="number"
                   min="1"
                   placeholder="Montant de votre don"
-                  {...register("amount")}
                   value={customAmount}
                   onChange={(e) => {
                     handleAmountSelection(e.target.value);
@@ -94,26 +85,23 @@ export const Donation = () => {
                   €
                 </div>
               </div>
-              {errors.amount?.message && (
-                <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">
-                  {errors.amount?.message}
-                </p>
-              )}
             </div>
           </div>
           <div className="flex justify-around items-center mb-8 mt-8">
             <input
               type="submit"
               className="cursor-pointer primary-bg button text-white font-bold py-2 px-4 w-fit rounded focus:outline-none focus:shadow-outline"
-              value={`Je donne ${selectedAmount} €`}
+              value={!selectedAmount || selectedAmount <=0 ? "Faire un don" : `Je donne ${selectedAmount} €`}
             />
           </div>
           <div className="px-10">
-            <div className="px-6 mb-2 text-white primary-bg text-center rounded p-2">
-              <p>
-                Si je suis imposable, mon don ne me coûte réellement que {realAmount} € après réduction fiscale. (réduction de {reduction} € à hauteur de 20% du revenu imposable)
-              </p>
-            </div>
+            {realAmount > 0 &&
+              <div className="px-6 mb-2 text-white primary-bg text-center rounded p-2">
+                <p>
+                  Si je suis imposable, mon don ne me coûte réellement que {realAmount} € après réduction fiscale. (réduction de {reduction} € à hauteur de 20% du revenu imposable)
+                </p>
+              </div>
+            }
           </div>
         </form>
       </div>

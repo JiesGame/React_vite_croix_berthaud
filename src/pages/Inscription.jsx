@@ -10,10 +10,10 @@ export const Inscription = () => {
   const schema = yup.object().shape({
     firstname: yup.string().required("Le prénom est requis."),
     lastname: yup.string().required("Le nom de famille est requis."),
-    birthdate: yup.date().required("La date de naissance est requise."),
+    birthdate: yup.date().required("La date de naissance est requise.").typeError("La date de naissance est requise."),
     legaltutorfirstname: yup.string(),
     legaltutorlastname: yup.string(),
-    phonenumber: yup.string().matches(phoneRegExp, "Le numéro de téléphone n'est pas valide").required("Un numéro de téléphone est requis."),
+    phonenumber: yup.string().nullable().matches(phoneRegExp, "Le numéro de téléphone n'est pas valide").required("Un numéro de téléphone est requis."),
     homephonenumber: yup.string().matches(phoneRegExp, "Le numéro de téléphone n'est pas valide"),
     adresse: yup.string().required("L'adresse est requise.")
   });
