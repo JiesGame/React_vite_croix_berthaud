@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 // const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
 const baseURL = import.meta.env.VITE_API_URL;
@@ -41,6 +42,28 @@ export const articlesCategoryFetch = async (setDataArticles, category) => {
     console.error('Error:', error);
     throw error;
   });
+};
+
+export const articlesSearchFetch = async (searchQuery, setSearchData, navigate) => {
+  console.log(searchQuery);
+  const fetchURL = `${baseURL}/articles_all`;
+  try {
+    const response = await axios.get(fetchURL, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const filteredData = response.data.filter(item =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) || item.content.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    Cookies.remove('search');
+    setSearchData(filteredData.reverse());
+    Cookies.set('search', JSON.stringify(filteredData.reverse()))
+    location.pathname === "/search" ? window.location.reload() : navigate("/search");
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
 };
 
 export const showArticleFetch = async (id, setDataArticle) => {

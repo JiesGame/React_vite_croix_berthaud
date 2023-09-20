@@ -6,7 +6,6 @@ const parsedID = userInfoCookie ? JSON.parse(Cookies.get('userInfo')).id : "";
 const parsedEmail = userInfoCookie ? JSON.parse(Cookies.get('userInfo')).email : "";
 const parsedAdmin = userInfoCookie ? JSON.parse(Cookies.get('userInfo')).is_admin : "";
 
-
 export const userAtom = atom({
   id: parsedID,
   email: parsedEmail,

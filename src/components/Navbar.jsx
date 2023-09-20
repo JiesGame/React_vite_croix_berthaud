@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState, useRef } from "react";
 import { Collapse, Dropdown, initTE } from "tw-elements";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/img/logo.svg";
 import glass from "../assets/img/glass.svg";
 import burger from "../assets/img/burger.svg";
@@ -13,7 +13,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';
 import "../assets/fonts/Koulen-Regular.ttf";
 import { articlesCategoryFetch } from "../services/axiosArticle";
-
+import { articlesSearchFetch } from "../services/axiosArticle";
 
 export const Navbar = () => {
   const [userInfo] = useAtom(userAtom)
@@ -24,6 +24,18 @@ export const Navbar = () => {
   const [isBurger, setIsBurger] = useState(false);
   const dropdownTimeoutRef = useRef(null);
   const [dataArticles, setDataArticles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchData, setSearchData] = useState('');
+  const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearch = () => {
+    articlesSearchFetch(searchQuery, setSearchData, navigate);
+    setSearchQuery('');
+  };
 
   useEffect(() => {
     initTE({ Collapse, Dropdown });
@@ -86,8 +98,18 @@ export const Navbar = () => {
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2 fbiconNav cursor-pointer" />
             </a>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
-              <input placeholder="Recherche ..." className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"></input>
-              <img src={glass} alt="glass" className="w-8 ml-1 mr-2 hidden sm:block" />
+              <input
+                placeholder="Recherche ..."
+                className="white dark-bg rounded-md h-[30px] mt-[4px] lg:mt-[7px] px-2 w-[100px] sm:w-[140px] lg:w-auto mr-2 sm:mr-0"
+                value={searchQuery}
+                onChange={handleInputChange}
+                onKeyUp={(event) => {
+                  if (event.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
+              />
+                <img src={glass} onClick={handleSearch} alt="glass" className="w-8 ml-1 mr-2 hidden sm:block cursor-pointer" />
               <div className="whitespace-nowrap select-none" data-te-dropdown-ref>
                 <a className="flex items-center hidden-arrow whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none gap-1" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
                   {!isMobile && (
