@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 import { useAtom } from 'jotai';
 import { userAtom } from '../store/atoms';
 import "../assets/fonts/Koulen-Regular.ttf";
+import { articlesCategoryFetch } from "../services/axiosArticle";
 
 
 export const Navbar = () => {
@@ -22,6 +23,7 @@ export const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isBurger, setIsBurger] = useState(false);
   const dropdownTimeoutRef = useRef(null);
+  const [dataArticles, setDataArticles] = useState([]);
 
   useEffect(() => {
     initTE({ Collapse, Dropdown });
@@ -46,43 +48,33 @@ export const Navbar = () => {
   }
 
   const [dropdownStates, setDropdownStates] = useState({
-    communityCenterID: false,
-    programID: false,
-    onDisplayID: false,
-    childActivitiesID: false,
-    adultActivitiesID: false,
-    NewsID: false
+    maison_de_quartier: false,
+    programme: false,
+    a_l_affiche: false,
+    activites_enfants: false,
+    activites_adultes: false,
+    news: false
   });
 
-  const handleDropdownClick = (articleId) => {
+  const handleDropdownClick = (category) => {
+    articlesCategoryFetch(setDataArticles, category);
     setDropdownStates((prevState) => {
       const updatedStates = {};
       Object.keys(prevState).forEach((key) => {
-        updatedStates[key] = key === articleId ? !prevState[key] : false;
+        updatedStates[key] = key === category ? !prevState[key] : false;
       });
       return updatedStates;
     });
     clearTimeout(dropdownTimeoutRef.current);
   };
   
-  const handleMouseEnter = (articleId) => {
-    setDropdownStates((prevState) => {
-      const updatedStates = {};
-      Object.keys(prevState).forEach((key) => {
-        updatedStates[key] = key === articleId;
-      });
-      return updatedStates;
-    });
-    clearTimeout(dropdownTimeoutRef.current);
-  };
-  
-  const handleMouseLeave = (articleId) => {
+  const handleMouseLeave = (category) => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setDropdownStates((prevState) => ({
         ...prevState,
-        [articleId]: false
+        [category]: false
       }));
-    }, 1000);
+    }, 2000);
   };
 
   if (!isNotFoundPage) {
@@ -159,99 +151,134 @@ export const Navbar = () => {
           </div>
           <div className={`navbar select-none	md:flex dark-bg white flex whitespace-nowrap justify-between text-lg lg:text-xl ${isBurger ? "block flex-col md:flex-row" : "hidden"}`}>
             <article
-              className="lg:ml-[6%] 2xl:ml-[9%] pb-4 cursor-pointer px-12"
-              onClick={() => handleDropdownClick('communityCenterID')}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={() => handleMouseLeave('communityCenterID')}
+              className="ml-[2%] lg:ml-[6%] 2xl:ml-[9%] pb-4 cursor-pointer"
+              onClick={() => handleDropdownClick('maison_de_quartier')}
+              onMouseLeave={() => handleMouseLeave('maison_de_quartier')}
             >
               Maison de quartier
-              {dropdownStates.communityCenterID && (
-                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
-                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● whitespace-nowrap</Link>
-                  <Link to="/cgu" className="block white">● cursor-pointer</Link>
-                  <Link to="/user_charter" className="block white">● justify-between</Link>
-                  <Link to="/user_charter" className="block white">● primary-bg</Link>
-                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● user_charter</Link>
+              {dropdownStates.maison_de_quartier && (
+                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    {dataArticles.map((article) => (
+                      <Link
+                        to={`/article/${article.id}`}
+                        key={article.id}
+                        className={`cursor-pointer pb-4 px-[1%] white`}
+                      >
+                        ● {article.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4 px-12"
-              onClick={() => handleDropdownClick('programID')}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={() => handleMouseLeave('programID')}
+              className="ml-[2%] sm:ml-0 cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('programme')}
+              onMouseLeave={() => handleMouseLeave('programme')}
             >
               Programme
-              {dropdownStates.programID && (
-                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
-                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
-                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
-                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
-                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
+              {dropdownStates.programme && (
+                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    {dataArticles.map((article) => (
+                      <Link
+                        to={`/article/${article.id}`}
+                        key={article.id}
+                        className={`cursor-pointer pb-4 px-[1%] white`}
+                      >
+                        ● {article.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4 px-12"
-              onClick={() => handleDropdownClick('onDisplayID')}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={() => handleMouseLeave('onDisplayID')}
+              className="ml-[2%] sm:md-[0%] cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('a_l_affiche')}
+              onMouseLeave={() => handleMouseLeave('a_l_affiche')}
             >
               A l'affiche
-              {dropdownStates.onDisplayID && (
-                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
-                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
-                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
-                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
-                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
+              {dropdownStates.a_l_affiche && (
+                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    {dataArticles.map((article) => (
+                      <Link
+                        to={`/article/${article.id}`}
+                        key={article.id}
+                        className={`cursor-pointer pb-4 px-[1%] white`}
+                      >
+                        ● {article.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4 px-12"
-              onClick={() => handleDropdownClick('childActivitiesID')}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={() => handleMouseLeave('childActivitiesID')}
+              className="ml-[2%] sm:md-[0%] cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('activites_enfants')}
+              onMouseLeave={() => handleMouseLeave('activites_enfants')}
             >
               Activités enfants
-              {dropdownStates.childActivitiesID && (
-                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
-                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
-                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
-                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
-                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
+              {dropdownStates.activites_enfants && (
+                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    {dataArticles.map((article) => (
+                      <Link
+                        to={`/article/${article.id}`}
+                        key={article.id}
+                        className={`cursor-pointer pb-4 px-[1%] white`}
+                      >
+                        ● {article.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </article>
             <article
-              className="cursor-pointer pb-4 px-12"
-              onClick={() => handleDropdownClick('adultActivitiesID')}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={() => handleMouseLeave('adultActivitiesID')}
+              className="ml-[2%] sm:md-[0%] cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('activites_adultes')}
+              onMouseLeave={() => handleMouseLeave('activites_adultes')}
             >
               Activités adultes
-              {dropdownStates.adultActivitiesID && (
-                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
-                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
-                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
-                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
-                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
+              {dropdownStates.activites_adultes && (
+                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    {dataArticles.map((article) => (
+                      <Link
+                        to={`/article/${article.id}`}
+                        key={article.id}
+                        className={`cursor-pointer pb-4 px-[1%] white`}
+                      >
+                        ● {article.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </article>
             <article
-              className="lg:mr-[6%] 2xl:mr-[9%] cursor-pointer pb-4 px-12"
-              onClick={() => handleDropdownClick('NewsID')}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={() => handleMouseLeave('NewsID')}
+              className="ml-[2%] sm:md-[0%] mr-[2%] lg:mr-[6%] 2xl:mr-[9%] cursor-pointer pb-4"
+              onClick={() => handleDropdownClick('news')}
+              onMouseLeave={() => handleMouseLeave('news')}
             >
               News
-              {dropdownStates.NewsID && (
-                <div className="flex justify-between dropdown-content cursor-pointer w-full left-0 px-2 py-6 primary-bg">
-                  <Link to="/" className="lg:ml-[6%] 2xl:ml-[9%] block white">● Atelier d'écriture</Link>
-                  <Link to="/cgu" className="block white">● Méditation pleine conscience</Link>
-                  <Link to="/user_charter" className="block white">● Méditation sonore</Link>
-                  <Link to="/contact" className="lg:mr-[6%] 2xl:mr-[9%] block white">● Réflexologie plantaire</Link>
+              {dropdownStates.news && (
+                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    {dataArticles.map((article) => (
+                      <Link
+                        to={`/article/${article.id}`}
+                        key={article.id}
+                        className={`cursor-pointer pb-4 px-[1%] white`}
+                      >
+                        ● {article.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </article>
