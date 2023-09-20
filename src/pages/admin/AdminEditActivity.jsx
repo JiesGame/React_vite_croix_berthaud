@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from "react";
 import {
   showActivityFetch,
@@ -24,9 +25,11 @@ export const AdminEditActivity = () => {
     showActivityFetch(id, setDataActivity);
   }, [id]);
 
-  const onSubmit = async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     const data = JSON.stringify({ activity: dataActivity });
     updateActivityFetch(id, data, navigate);
+    console.log(data)
   };
 
   return (

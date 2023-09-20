@@ -185,7 +185,8 @@ export const showActivityFetch = async (id, setDataActivity) => {
         'Authorization': `Bearer ${Cookies.get('token')}`
       }
     });
-    setDataActivity(response.data);
+    setDataActivity({name: response.data.name, price: response.data.price,
+    period: response.data.period});
     return response.data;
   } catch (error) {
     console.error('Error:', error);
@@ -206,7 +207,7 @@ export const updateActivityFetch = async (id, data, navigate) => {
     });
     if (response.status === 200) {
       toastSuccess("L'activité a été mis à jour.");
-      navigate('/admin_activities')
+      navigate('/admin_activities');
     } else if (response.status === 401) {
       toastError("Vous n'êtes pas administrateur.");
     } else {

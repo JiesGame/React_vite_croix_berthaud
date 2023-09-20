@@ -1,15 +1,39 @@
 import PropTypes from "prop-types";
-import { createRatingFetch } from "../services/axiosRating";
+import { createRatingFetch, updateRatingFetch } from "../services/axiosRating";
+import { userRatingFetch } from "../services/axiosUser";
 import Cookies from "js-cookie";
 import { toastInfo } from "../services/toast";
+import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { userAtom } from "../store/atoms";
 
 export const RatingForm = (props) => {
   const { articleID, rating } = props;
-
+  const [userInfo] = useAtom(userAtom);
+  const [alreadyNoted, SetAlreadyNoted] = useState(undefined);
+  const [score, setScore] = useState('')
+  const [ratingID,setRatingID] = useState('');
   const handleRatingClick = (e) => {
-    const data = JSON.stringify({"rating":{"score":e.target.value}});
-    Cookies.get("token") ? createRatingFetch(articleID, data): toastInfo("Vous devez être connecté pour noter un article.")
+    if (Cookies.get("token")) {
+      setScore(e.target.value)
+      userRatingFetch(userInfo.id, articleID, SetAlreadyNoted, setRatingID);
+    } else {
+      toastInfo("Vous devez être connecté pour noter un article.")
+    }
   };
+
+  useEffect(() => {
+    const data = JSON.stringify({"rating":{"score":score}});
+    if (alreadyNoted) {
+      updateRatingFetch(articleID, ratingID, data);
+    } else if (alreadyNoted == false) {
+      createRatingFetch(articleID, data);
+    } else {
+      return
+    }
+    console.log(alreadyNoted)
+    console.log('*****************************************')
+  }, [alreadyNoted])
 
   return (
     <div className="ml-[1.5%]">
