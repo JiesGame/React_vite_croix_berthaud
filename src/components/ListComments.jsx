@@ -9,7 +9,7 @@ export const ListComments = (props) => {
 
   useEffect(() => {
     commentsFetch(articleID, setDataComments);
-  }, [])
+  }, [articleID])
 
   return (
     <div className="font-semibold">

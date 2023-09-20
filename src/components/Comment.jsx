@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from "prop-types";
 import { format } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
@@ -12,7 +11,7 @@ export const Comment = (props) => {
     <>
       <div className='flex'>Ecrit par {user_id}, le {formattedDate}</div>
       <div className='flex flex-col items-start my-4'>
-      {content}
+        {content}
       </div>
     </>
   )
