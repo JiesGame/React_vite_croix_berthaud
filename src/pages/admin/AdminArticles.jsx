@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { Article } from "../../components/Article";
 import { AdminPanel } from "../../components/admin/AdminPanel";
-import { adminArticlesFetch } from "../../services/axiosAdmin";
+import { articlesCategoryFetch } from "../../services/axiosArticle";
 
 export const AdminArticles = () => {
   const[dataArticles, setDataArticles] = useState([]);
@@ -11,7 +11,7 @@ export const AdminArticles = () => {
   
   useEffect(() => {
     console.log(category)
-    adminArticlesFetch(setDataArticles, category);
+    articlesCategoryFetch(setDataArticles, category);
   },[category])
 
   const handleChange = (e) => {

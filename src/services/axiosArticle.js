@@ -23,6 +23,26 @@ export const articlesFetch = async (setDataArticles) => {
   });
 };
 
+export const articlesCategoryFetch = async (setDataArticles, category) => {
+  const fetchURL = `${baseURL}/articles/category/${category}`;
+  return axios.get(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
+    setDataArticles(response.data.reverse());
+    return response.data;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
 export const showArticleFetch = async (id, setDataArticle) => {
   const fetchURL = `${baseURL}/articles/${id}`
   return axios.get(
