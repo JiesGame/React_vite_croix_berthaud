@@ -163,3 +163,29 @@ export const deleteProfileFetch = async (data, setUserInfo) => {
     throw error;
   });
 }
+
+export const userRatingFetch = async (userID, articleID, setAlreadyNoted, setRatingID) => {
+  const fetchURL = `${baseURL}/users/${userID}`
+  return axios.get(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('Response data:', response.data);
+    if(response.data.ratings.filter(rating => rating.article_id == articleID).length == 1) {
+      setAlreadyNoted(true);
+      setRatingID(response.data.ratings.filter(rating => rating.article_id == articleID)[0].id);
+    } else {
+      setAlreadyNoted(false);
+    }
+    return response.data;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
