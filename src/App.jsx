@@ -27,6 +27,7 @@ import { AdminEditActivity } from "./pages/admin/AdminEditActivity";
 import { Donation } from "./pages/Donation";
 import { ThanksForDonation } from "./pages/ThanksForDonation";
 import { Contact } from "./pages/Contact";
+import { Inscription } from "./pages/Inscription";
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
             <Route element={<PrivateRoutes/>}>
               <Route path='change_profile' element={<ChangeProfile />}/>
               <Route path='delete_account' element={<DeleteProfile />}/>
+              <Route path='inscription' element={<Inscription />}/>
             </Route>
             <Route path="/" element={<Home />} />
             <Route path="/404" element={<NotFound />} />
