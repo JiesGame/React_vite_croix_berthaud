@@ -20,6 +20,10 @@
   color: #059DE0;
 }
 
+.card_link:hover {
+  color: #059DE0;
+}
+
 .secondary-bg {
   background-color: #059DE0;
 }
@@ -48,9 +52,9 @@
   background-color: #052130;
 }
 
-.dark :hover {
+/* .dark :hover {
   color: #052130;
-}
+} */
 
 .light-gray {
   color: #EDF3F6;
@@ -68,8 +72,12 @@ footer a:hover {
   color: #052130;
 }
 
-.navbar a:hover {
+.navbar article:hover {
   color: #0DFDFF;
+}
+
+.navbar a:hover {
+  color: #0dFDFF;
 }
 
 .download:hover {
@@ -128,4 +136,12 @@ footer a:hover {
 
 .fbiconNav:hover {
   filter: invert(5) saturate(0) brightness(10);
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  border-bottom: 6px solid #FFFFFF;
+  border-top: 16px solid #052130;
 }

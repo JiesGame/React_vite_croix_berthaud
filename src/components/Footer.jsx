@@ -21,6 +21,20 @@ export const Footer = () => {
     };
   }, []);
 
+  const handleHyperLinkFB = () => {
+    const confirmation = window.confirm("Voulez-vous ouvrir un nouvel onglet Facebook ?");
+    if (confirmation) {
+      window.open('https://www.facebook.com/lacroixberthaud/?locale=fr_FR', '_blank');
+    }
+  };
+
+  const handleHyperLinkSC = () => {
+    const confirmation = window.confirm("Voulez-vous ouvrir un nouvel onglet vers le site de Saint-Chamond ?");
+    if (confirmation) {
+      window.open('https://saint-chamond.fr/', '_blank');
+    }
+  };
+
   if (!isNotFoundPage) {
     return ( 
     <footer className="primary-bg text-white w-full whitespace-nowrap">
@@ -28,8 +42,8 @@ export const Footer = () => {
         {isMobile ? (
           <div className="w-full">
             <div className="text-center">
-              <p className="font-semibold ml-5 mt-1 sm:ml-0 mb-3 sm:mb-[-12px]">Maison de quartier - La Croix Berthaud</p>
-              <p className="font-semibold ml-5 mt-2 sm:ml-0 mb-3 sm:mb-[-12px]">Square Henri Dunant, 42400 Saint-Chamond</p>
+              <p className="font-semibold lg:ml-5 mt-1 sm:ml-0 mb-3 text-sm md:text-medium">Maison de quartier - La Croix Berthaud</p>
+              <p className="font-semibold lg:ml-5 mt-2 sm:ml-0 mb-3 text-sm md:text-medium">Square Henri Dunant, 42400 Saint-Chamond</p>
               <hr className="mt-6" />
             </div>
             <div className= "flex flex-col-reverse">
@@ -53,7 +67,7 @@ export const Footer = () => {
                   </li>
                   <li>
                     <a href="#" className="text-white hover:underline font-semibold text-lg">
-                      Mentions légales
+                      CGU
                     </a>
                   </li>
                 </ul>
@@ -78,7 +92,7 @@ export const Footer = () => {
               <div className="md:flex md:justify-center">
                 <ul className="md:flex md:place-items-end flex justify-center text-center">
                   <li>
-                    <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR" target="_blank" rel="noopener noreferrer" className="text-white dark flex justify-center">
+                    <a onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer text-white dark flex justify-center">
                       <img src={fbf} alt="facebookFooter" className="w-auto h-8 ml-7 fbicon" />
                     </a>
                   </li>
@@ -86,9 +100,9 @@ export const Footer = () => {
                   |
                   </li>
                   <li>
-                    <a href="#" className="text-white hover:underline font-semibold text-lg mb-1">
+                    <Link to="contact" className="text-white hover:underline font-semibold text-lg mb-1">
                       Contact
-                    </a>
+                    </Link>
                   </li>
                   <li className="md:mx-2 hidden md:inline-block mb-1">
                   |
@@ -108,8 +122,8 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className="flex md:justify-end justify-center my-4 mb-1">
-                <a href="https://saint-chamond.fr/" target="_blank" rel="noopener noreferrer">
+              <div className="flex md:justify-end justify-center my-4 mb-1 cursor-pointer">
+                <a  onClick={handleHyperLinkSC} rel="noopener noreferrer">
                   <img src={logoSC} width={200} height={200} alt="logo Saint-Chamond"/>
                 </a>     
               </div>

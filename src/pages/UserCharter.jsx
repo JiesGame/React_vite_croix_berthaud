@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import '../App.css';
 import { saveAs } from 'file-saver';
-import lcbCGU from "../assets/public/CGU-LaCroixBerthaud.pdf"
+import lcbRI from "../assets/public/RèglementIntérieur-LaCroixBerthaud.pdf"
 
 export const UserCharter = () => {
   const handleDownload = () => {
     const confirmation = window.confirm("Voulez-vous télécharger le fichier PDF ?");
     if (confirmation) {
-      saveAs(lcbCGU, "CGU-LaCroixBerthaud.pdf");
+      saveAs(lcbRI, "RèglementIntérieur-LaCroixBerthaud.pdf");
     }
   };
 

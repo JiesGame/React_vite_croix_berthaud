@@ -6,6 +6,14 @@ import { userAtom } from "../store/atoms";
 import { DeleteArticleButton } from "./DeleteArticleButton";
 import { format } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
+import { useState, useRef } from "react";
+import Cookies from "js-cookie";
+import { toastInfo } from '../services/toast';
+import { CommentForm } from "./CommentForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { ListComments } from "./ListComments";
+import { RatingForm } from "./RatingForm";
 
 export const Article = (props) => {
   const [userInfo] = useAtom(userAtom);
@@ -14,6 +22,22 @@ export const Article = (props) => {
   const articleID = props.id;
   const isLinkVisible = props.isLinkVisible;
   const formattedDate = format(new Date(props.created_at), "dd MMMM yyyy", { locale: frLocale });
+  const [isCommentDropdownVisible, setIsCommentDropdownVisible] = useState('');
+  const commentFormRef = useRef(null);
+  const handleCommentClick = (e) => {
+    e.preventDefault();
+    const token = Cookies.get('token');
+    if (token) {
+      setIsCommentDropdownVisible(!isCommentDropdownVisible);
+      commentFormRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      toastInfo("Vous devez être connecté pour effectuer cette action.");
+    }
+  };
+  const [rating, setRating] = useState('');
+  const handleRatingClick = (e) => {
+    setRating(e.target.value);
+  };
 
   return (
     <div className="text-center">
@@ -26,17 +50,17 @@ export const Article = (props) => {
           </div>
           <div>
             <h1 className="text-center font-semibold text-3xl py-4">
-              {isLinkVisible ? (
+              {isLinkVisible ? 
                 <p>
                   <Link to={`article/${articleID}`} className="dark font-medium">
                     {title}
                   </Link>
                 </p>
-              ) : (
+              : 
                 <p>
                   {title}
                 </p>
-              )}
+              }
             </h1>
           </div>
           <hr className="light-gray-border border-[1px] mx-[3%]" />
@@ -54,34 +78,16 @@ export const Article = (props) => {
             </div>
           )}
           <div className="flex md:justify-between md:flex-row md:items-center primary-bg text-white rounded-b py-1 flex-col items-center">
-            <div className="ml-[1.5%]">
-              <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label for="star5" title="text">
-                  5 stars
-                </label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label for="star4" title="text">
-                  4 stars
-                </label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label for="star3" title="text">
-                  3 stars
-                </label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label for="star2" title="text">
-                  2 stars
-                </label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label for="star1" title="text">
-                  1 star
-                </label>
-              </div>
-            </div>
-            <a href="#" className="hover:underline mr-[1.5%] font-normal flex items-center mb-2">
-              Laisser un commentaire
+            <RatingForm articleID={articleID} />
+            <a href="#" className="mr-[1.5%] font-normal flex items-center mb-2" onClick={handleCommentClick}>
+            <FontAwesomeIcon icon={faCommentDots} />
+            <p className="hover:underline ml-2">Laisser un commentaire</p>
             </a>
           </div>
+          <ListComments articleID={articleID} handleRatingClick={handleRatingClick}/>
+        </div >
+        <div ref={commentFormRef}>
+          {isCommentDropdownVisible && <CommentForm articleID={articleID}/>}
         </div>
       </div>
     </div>
@@ -94,4 +100,5 @@ Article.propTypes = {
   content: PropTypes.string,
   isLinkVisible: PropTypes.bool,
   created_at: PropTypes.string,
+  initialRating: PropTypes.number
 };
