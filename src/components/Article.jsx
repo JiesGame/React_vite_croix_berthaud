@@ -6,7 +6,7 @@ import { userAtom } from "../store/atoms";
 import { DeleteArticleButton } from "./DeleteArticleButton";
 import { format } from 'date-fns';
 import frLocale from 'date-fns/locale/fr';
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Cookies from "js-cookie";
 import { toastInfo } from '../services/toast';
 import { CommentForm } from "./CommentForm";
@@ -23,11 +23,13 @@ export const Article = (props) => {
   const isLinkVisible = props.isLinkVisible;
   const formattedDate = format(new Date(props.created_at), "dd MMMM yyyy", { locale: frLocale });
   const [isCommentDropdownVisible, setIsCommentDropdownVisible] = useState('');
+  const commentFormRef = useRef(null);
   const handleCommentClick = (e) => {
     e.preventDefault();
     const token = Cookies.get('token');
     if (token) {
       setIsCommentDropdownVisible(!isCommentDropdownVisible);
+      commentFormRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       toastInfo("Vous devez être connecté pour effectuer cette action.");
     }
@@ -83,8 +85,10 @@ export const Article = (props) => {
             </a>
           </div>
           <ListComments articleID={articleID} handleRatingClick={handleRatingClick}/>
+        </div >
+        <div ref={commentFormRef}>
+          {isCommentDropdownVisible && <CommentForm articleID={articleID}/>}
         </div>
-        {isCommentDropdownVisible && <CommentForm articleID={articleID}/>}
       </div>
     </div>
   );
