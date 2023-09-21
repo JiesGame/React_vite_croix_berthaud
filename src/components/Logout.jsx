@@ -21,6 +21,6 @@ export const Logout = () => {
   }
 
   return (
-    <button className="px-[8px] md:px-[12px] py-1 light-bg text center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]" onClick={logout}>Se deconnecter</button>
+    <button className="px-[4px] md:px-[12px] w-full sm:w-auto py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]" onClick={logout}>Se deconnecter</button>
   )
 };
