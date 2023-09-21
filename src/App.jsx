@@ -7,6 +7,7 @@ import { Layout } from "./components/Layout";
 import { UserCharter } from "./pages/UserCharter";
 import { Cgu } from "./pages/Cgu";
 import { Search } from "./pages/Search";
+import { Prices } from "./pages/Prices";
 import './App.css';
 import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetPassword } from "./pages/ResetPassword";
@@ -66,6 +67,7 @@ function App() {
             <Route path="thank_you" element={<ThanksForDonation />} />
             <Route path="contact" element={<Contact />} />
             <Route path="search" element={<Search />} />
+            <Route path="prices" element={<Prices />} />
           </Routes>
         </Layout>
       </Router>
