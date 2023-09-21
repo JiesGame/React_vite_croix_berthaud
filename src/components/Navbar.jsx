@@ -113,16 +113,16 @@ export const Navbar = () => {
               <div className="whitespace-nowrap select-none" data-te-dropdown-ref>
                 <a className="flex items-center hidden-arrow whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none gap-1" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
                   {!isMobile && (
-                    (isLoggedIn ? <p className="light-bg pb-[6px] pt-[8px] sm:px-[20px] px-[10px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Mon compte</p> : <p className="light-bg pb-[6px] pt-[8px]  sm:px-[14px] px-[7px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Nous rejoindre</p>)
+                    (isLoggedIn ? <p className="light-bg pb-[6px] pt-[8px] sm:px-[20px] px-[17px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Mon compte</p> : <p className="light-bg pb-[6px] pt-[8px]  sm:px-[14px] px-[7px] koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">Nous rejoindre</p>)
                   )}
                 </a>
                 <ul className="absolute left-0 right-auto hidden list-none overflow-hidden border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
                   {!isLoggedIn &&
                   <>
-                    <li className="px-[10px] md:px-[18px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
+                    <li className="px-[13px] md:px-[18px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
                       <Link to="/login" data-te-dropdown-item-ref >Se connecter</Link>
                     </li>
-                    <li className="px-[1px] md:px-[18px] py-1 light-bg text center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
+                    <li className="px-[5px] md:px-[18px] py-1 light-bg text center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
                       <Link to="/register" data-te-dropdown-item-ref >Nouveau compte</Link>
                     </li>
                   </>
@@ -135,7 +135,10 @@ export const Navbar = () => {
                       </li>
                     }
                     <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
-                      <Link to="/change_profile" data-te-dropdown-item-ref > profil</Link>
+                      <Link to="/inscription" data-te-dropdown-item-ref >Inscription</Link>
+                    </li>
+                    <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
+                      <Link to="/change_profile" data-te-dropdown-item-ref >profil</Link>
                     </li>
                     <li>
                       <Logout />
@@ -145,7 +148,7 @@ export const Navbar = () => {
                 </ul>
               </div>
               { userInfo?.is_admin ?
-                <Link to="/admin_create_article" className="light mt-2 pb-[6px] px-[14px] koulen font-medium hover:text-[#052130]">
+                <Link to="/admin_create_article" className="light mt-2 pb-[6px] sm:px-[14px] px-[7px] koulen font-medium hover:text-[#052130]">
                   Nouvel article
                 </Link>
               :
@@ -181,6 +184,7 @@ export const Navbar = () => {
               {dropdownStates.maison_de_quartier && (
                 <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    <Link to="/prices" className='cursor-pointer pb-4 px-[1%] white'>● Tarifs des activités</Link>
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
