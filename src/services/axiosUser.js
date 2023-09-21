@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-// const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
-const baseURL = import.meta.env.VITE_API_URL;
+const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
+// const baseURL = import.meta.env.VITE_API_URL;
 
 export const registerFetch = async (data) => {
   const fetchURL = `${baseURL}/users`
@@ -204,7 +204,7 @@ export const familyMembersAndActivitiesFetch = async (userID, setFamilyMembers) 
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
     console.log('Response data:', response.data);
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
-    setFamilyMembers({id:response.data.id})
+    setFamilyMembers(response.data.family_members)
     return response.data
   })
   .catch(error => {

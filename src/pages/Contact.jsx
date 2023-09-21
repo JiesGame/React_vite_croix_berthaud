@@ -1,5 +1,3 @@
-import { ListMembersAndActivities } from "../components/ListMembersAndActivities";
-
 export const Contact = () => {
 
   const handleHyperLinkFB = () => {
@@ -72,7 +70,6 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-      <ListMembersAndActivities />
     </div>
   )
 }

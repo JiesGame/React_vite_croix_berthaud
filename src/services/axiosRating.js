@@ -2,8 +2,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toastError, toastInfo, toastSuccess } from './toast';
 
-// const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
-const baseURL = import.meta.env.VITE_API_URL;
+const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
+// const baseURL = import.meta.env.VITE_API_URL;
 
 export const createRatingFetch = async (articleID, data) => {
   const fetchURL = `${baseURL}/articles/${articleID}/rating`
