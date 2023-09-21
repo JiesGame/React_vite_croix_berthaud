@@ -1,4 +1,3 @@
-
 export const ThanksForDonation = () => {
   return (
     <div className="flex items-center justify-center my-14">
