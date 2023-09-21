@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-// const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
-const baseURL = import.meta.env.VITE_API_URL;
+const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
+// const baseURL = import.meta.env.VITE_API_URL;
 
 export const registerFetch = async (data) => {
   const fetchURL = `${baseURL}/users`
@@ -183,6 +183,29 @@ export const userRatingFetch = async (userID, articleID, setAlreadyNoted, setRat
       setAlreadyNoted(false);
     }
     return response.data;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const familyMembersAndActivitiesFetch = async (userID, setFamilyMembers) => {
+  const fetchURL = `${baseURL}/users/${userID}`
+  return axios.get(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
+    console.log('Response data:', response.data);
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
+    setFamilyMembers(response.data.family_members)
+    return response.data
   })
   .catch(error => {
     console.error('Error:', error);

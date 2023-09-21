@@ -138,7 +138,7 @@ export const Navbar = () => {
                       <Link to="/inscription" data-te-dropdown-item-ref >Inscription</Link>
                     </li>
                     <li className="px-[10px] md:px-[14px] py-1 light-bg text-center koulen font-medium hover:bg-[#052130] hover:text-[#0DFDFF]">
-                      <Link to="/change_profile" data-te-dropdown-item-ref >profil</Link>
+                      <Link to="/profile" data-te-dropdown-item-ref > profil</Link>
                     </li>
                     <li>
                       <Logout />

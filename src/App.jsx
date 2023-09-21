@@ -29,6 +29,7 @@ import { Donation } from "./pages/Donation";
 import { ThanksForDonation } from "./pages/ThanksForDonation";
 import { Contact } from "./pages/Contact";
 import { Inscription } from "./pages/Inscription";
+import { Profile } from "./pages/Profile";
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
               <Route path='change_profile' element={<ChangeProfile />}/>
               <Route path='delete_account' element={<DeleteProfile />}/>
               <Route path='inscription' element={<Inscription />}/>
+              <Route path="profile" element={<Profile/>} />
             </Route>
             <Route path="/" element={<Home />} />
             <Route path="/404" element={<NotFound />} />
