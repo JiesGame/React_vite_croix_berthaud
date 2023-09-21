@@ -189,3 +189,26 @@ export const userRatingFetch = async (userID, articleID, setAlreadyNoted, setRat
     throw error;
   });
 };
+
+export const familyMembersAndActivitiesFetch = async (userID, setFamilyMembers) => {
+  const fetchURL = `${baseURL}/users/${userID}`
+  return axios.get(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
+    console.log('Response data:', response.data);
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
+    setFamilyMembers({id:response.data.id})
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
