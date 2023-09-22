@@ -48,27 +48,35 @@ export const Footer = () => {
             </div>
             <div className= "flex flex-col-reverse">
               <div className="md:flex md:justify-center">
-                <ul className="md:flex md:place-items-end flex justify-center gap-4 text-center">
-                  <li>
-                    <a href="https://www.facebook.com/lacroixberthaud/?locale=fr_FR" target="_blank" rel="noopener noreferrer" className="text-white dark flex justify-center">
-                      <img src={fbf} alt="facebook" className="h-8 mt-[-2px] ml-2 fbicon" />
-                    </a>
+                <ul className="md:flex md:place-items-end flex justify-center gap-1 text-center">
+                  <li className="mr-1">
+                    <span onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer text-white dark flex justify-center">
+                      <img src={fbf} alt="facebookFooter" className="w-auto h-8 ml-7 fbicon" />
+                    </span>
                   </li>
                   <li className="md:mx-2">
                     |
                   </li>
                   <li>
-                    <a href="#" className="text-white hover:underline font-semibold text-lg">
+                    <Link to="contact" className="text-white hover:underline font-semibold text-lg">
                       Contact
-                    </a>
+                    </Link>
                   </li>
                   <li className="md:mx-2">
                     |
                   </li>
                   <li>
-                    <a href="#" className="text-white hover:underline font-semibold text-lg">
+                    <Link to="user_charter" className="text-white hover:underline font-semibold text-lg mb-1">
+                      Règlement intérieur
+                    </Link>
+                  </li>
+                  <li className="md:mx-2">
+                    |
+                  </li>
+                  <li>
+                    <Link to="cgu" className="text-white hover:underline font-semibold text-lg mb-1">
                       CGU
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -123,9 +131,9 @@ export const Footer = () => {
                 </ul>
               </div>
               <div className="flex md:justify-end justify-center my-4 mb-1 cursor-pointer">
-                <a  onClick={handleHyperLinkSC} rel="noopener noreferrer">
+                <span  onClick={handleHyperLinkSC} rel="noopener noreferrer">
                   <img src={logoSC} width={200} height={200} alt="logo Saint-Chamond"/>
-                </a>     
+                </span>     
               </div>
             </div>
           </>
