@@ -60,7 +60,7 @@ export const Register = () => {
               <label className="block primary text-xl font-semibold mb-2">
                 Mot de passe
               </label>
-              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="password" placeholder="Mot de passe" {...register('password')} />
+              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="password" name="password" autoComplete="new-password" placeholder="Mot de passe" {...register('password')} />
               {errors.password?.message && <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.password?.message}</p>}
             </div>
           </div>
@@ -69,7 +69,7 @@ export const Register = () => {
               <label className="block primary text-xl font-semibold mb-2">
                 Confirmation du mot de passe
               </label>
-              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="password" placeholder="Confirmation du mot de passe..." {...register('password_confirmation')} />
+              <input className="bg-white appearance-none border-2 light-gray-border rounded-lg w-full py-2 px-4 primary leading-tight focus:outline-none focus:bg-white focus:ring-0 shadow-lg h-12 placeholder-gray-300 font-medium" type="password" name="password" autoComplete="new-password" placeholder="Confirmation du mot de passe..." {...register('password_confirmation')} />
               {errors.password_confirmation?.message && <p className="ml-1 pt-2 font-semibold text-red-500 text-sm">{errors.password_confirmation?.message}</p>}
             </div>
           </div>
