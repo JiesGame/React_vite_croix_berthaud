@@ -81,9 +81,9 @@ export const Footer = () => {
                 </ul>
               </div>
               <div className="flex md:justify-end justify-center my-4">
-                <a href="https://saint-chamond.fr/" target="_blank" rel="noopener noreferrer">
+                <span  onClick={handleHyperLinkSC} target="_blank" rel="noopener noreferrer">
                   <img src={logoSC} width={200} height={200} alt="logo Saint-Chamond"/>
-                </a>     
+                </span>     
               </div>
             </div>
           </div>
