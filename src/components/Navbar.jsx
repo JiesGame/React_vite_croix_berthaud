@@ -94,9 +94,9 @@ export const Navbar = () => {
       <>
         <nav className="primary-bg w-full">
           <div className="flex">
-            <a onClick={handleHyperLink} rel="noopener noreferrer" className="hidden sm:block">
+            <span onClick={handleHyperLink} rel="noopener noreferrer" className="hidden sm:block">
               <img src={fb} alt="facebook" className="h-8 mt-[2px] sm:mt-[5px] ml-2 fbiconNav cursor-pointer" />
-            </a>
+            </span>
             <div className="w-full flex justify-end whitespace-nowrap md:text-lg">
               <input
                 placeholder="Recherche ..."
@@ -183,13 +183,12 @@ export const Navbar = () => {
               Maison de quartier
               {dropdownStates.maison_de_quartier && (
                 <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
-                    <Link to="/prices" className='cursor-pointer pb-4 px-[1%] white'>● Tarifs des activités</Link>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
                         key={article.id}
-                        className={`cursor-pointer pb-4 px-[1%] white`}
+                        className={`cursor-pointer pb-4 white text-lg`}
                       >
                         ● {article.title}
                       </Link>
@@ -206,12 +205,12 @@ export const Navbar = () => {
               Programme
               {dropdownStates.programme && (
                 <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
                         key={article.id}
-                        className={`cursor-pointer pb-4 px-[1%] white`}
+                        className={`cursor-pointer pb-4 white text-lg`}
                       >
                         ● {article.title}
                       </Link>
@@ -228,12 +227,12 @@ export const Navbar = () => {
               A l'affiche
               {dropdownStates.a_l_affiche && (
                 <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
                         key={article.id}
-                        className={`cursor-pointer pb-4 px-[1%] white`}
+                        className={`cursor-pointer pb-4 white text-lg`}
                       >
                         ● {article.title}
                       </Link>
@@ -250,12 +249,12 @@ export const Navbar = () => {
               Activités enfants
               {dropdownStates.activites_enfants && (
                 <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
                         key={article.id}
-                        className={`cursor-pointer pb-4 px-[1%] white`}
+                        className={`cursor-pointer pb-4 white text-lg`}
                       >
                         ● {article.title}
                       </Link>
@@ -272,12 +271,12 @@ export const Navbar = () => {
               Activités adultes
               {dropdownStates.activites_adultes && (
                 <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
                         key={article.id}
-                        className={`cursor-pointer pb-4 px-[1%] white`}
+                        className={`cursor-pointer pb-4 white text-lg`}
                       >
                         ● {article.title}
                       </Link>
@@ -294,12 +293,12 @@ export const Navbar = () => {
               News
               {dropdownStates.news && (
                 <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
                         key={article.id}
-                        className={`cursor-pointer pb-4 px-[1%] white`}
+                        className={`cursor-pointer pb-4 white text-lg`}
                       >
                         ● {article.title}
                       </Link>
