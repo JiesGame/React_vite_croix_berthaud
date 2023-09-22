@@ -5,9 +5,12 @@ import * as yup from 'yup';
 import { endOfDay, differenceInYears } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { listActivitiesFetch } from '../services/axiosActivity';
-import { donationFetch } from '../services/axiosStripe';
+import { inscriptionStripeFetch } from '../services/axiosStripe';
+import { useAtom } from "jotai";
+import { userAtom } from "../store/atoms";
 
 export const Inscription = () => {
+  const [userInfo] = useAtom(userAtom);
   const [member, setMember] = useState('')
 
   const phoneRegExp = /^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/
@@ -82,7 +85,7 @@ export const Inscription = () => {
     e.preventDefault();
     console.log('lala')
     const amount = JSON.stringify({"Amount":checkedActivitiesTotal});
-    donationFetch(amount, setStripeURL);
+    inscriptionStripeFetch(amount, setStripeURL, member, checkedActivities, userInfo.id);
   };
   const [stripeURL, setStripeURL] = useState("");
 
