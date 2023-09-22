@@ -81,9 +81,9 @@ export const Footer = () => {
                 </ul>
               </div>
               <div className="flex md:justify-end justify-center my-4">
-                <a href="https://saint-chamond.fr/" target="_blank" rel="noopener noreferrer">
+                <span  onClick={handleHyperLinkSC} target="_blank" rel="noopener noreferrer">
                   <img src={logoSC} width={200} height={200} alt="logo Saint-Chamond"/>
-                </a>     
+                </span>     
               </div>
             </div>
           </div>
@@ -100,9 +100,9 @@ export const Footer = () => {
               <div className="md:flex md:justify-center">
                 <ul className="md:flex md:place-items-end flex justify-center text-center">
                   <li>
-                    <a onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer text-white dark flex justify-center">
+                    <span onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer text-white dark flex justify-center">
                       <img src={fbf} alt="facebookFooter" className="w-auto h-8 ml-7 fbicon" />
-                    </a>
+                    </span>
                   </li>
                   <li className="md:mx-2 hidden md:inline-block mb-1">
                   |
