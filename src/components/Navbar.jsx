@@ -182,8 +182,8 @@ export const Navbar = () => {
             >
               Maison de quartier
               {dropdownStates.maison_de_quartier && (
-                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
+                <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
@@ -204,8 +204,8 @@ export const Navbar = () => {
             >
               Programme
               {dropdownStates.programme && (
-                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
+                <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
@@ -226,8 +226,8 @@ export const Navbar = () => {
             >
               A l'affiche
               {dropdownStates.a_l_affiche && (
-                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
+                <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
@@ -248,8 +248,8 @@ export const Navbar = () => {
             >
               Activités enfants
               {dropdownStates.activites_enfants && (
-                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
+                <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
@@ -270,8 +270,8 @@ export const Navbar = () => {
             >
               Activités adultes
               {dropdownStates.activites_adultes && (
-                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
+                <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
@@ -292,8 +292,8 @@ export const Navbar = () => {
             >
               News
               {dropdownStates.news && (
-                <div className="text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-4">
+                <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}

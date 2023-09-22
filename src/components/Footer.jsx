@@ -100,9 +100,9 @@ export const Footer = () => {
               <div className="md:flex md:justify-center">
                 <ul className="md:flex md:place-items-end flex justify-center text-center">
                   <li>
-                    <a onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer text-white dark flex justify-center">
+                    <span onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer text-white dark flex justify-center">
                       <img src={fbf} alt="facebookFooter" className="w-auto h-8 ml-7 fbicon" />
-                    </a>
+                    </span>
                   </li>
                   <li className="md:mx-2 hidden md:inline-block mb-1">
                   |
