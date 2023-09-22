@@ -2,6 +2,7 @@
   font-family: "Koulen";
   src: local("Koulen-Regular"),
     url("./assets/fonts/Koulen-Regular.ttf") format("truetype");
+  font-display: swap;
 }
 
 .koulen {
