@@ -13,7 +13,6 @@ export const donationFetch = async (amount, setStripeURL) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setStripeURL(response.data.url)
     return response.data
   })
@@ -34,7 +33,6 @@ export const inscriptionStripeFetch = async (amount, setStripeURL, member, check
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setStripeURL(response.data.url);
     return response.data;
   })
