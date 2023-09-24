@@ -27,9 +27,9 @@ export const AdminUsers = () => {
   return (
     <>
       <AdminPanel />
-      <h1 className="text-4xl primary my-5 text-center">Gestion des utilisateurs</h1>
+      <h1 className="text-4xl primary mt-5 text-center">Gestion des utilisateurs</h1>
       <article className='flex justify-center'>
-        <div className="sm:w-[700px] rounded-lg shadow-lg my-10 primary-bg">
+        <div className="sm:w-[700px] rounded-lg shadow-lg my-5 primary-bg">
         <table className="w-full my-3">
           <thead>
             <tr className="text-white text-center">

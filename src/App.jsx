@@ -30,6 +30,7 @@ import { ThanksForDonation } from "./pages/ThanksForDonation";
 import { Contact } from "./pages/Contact";
 import { Inscription } from "./pages/Inscription";
 import { Profile } from "./pages/Profile";
+import { AdminInscriptions } from "./pages/admin/AdminInscriptions";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
               <Route path='admin_activities' element={<AdminActivities />}/>
               <Route path='admin_create_activity' element={<AdminCreateActivity />}/>
               <Route path='admin_edit_activity/:id' element={<AdminEditActivity />}/>
+              <Route path='admin_inscriptions' element={<AdminInscriptions />}/>
             </Route>
             <Route element={<PrivateRoutes/>}>
               <Route path='change_profile' element={<ChangeProfile />}/>

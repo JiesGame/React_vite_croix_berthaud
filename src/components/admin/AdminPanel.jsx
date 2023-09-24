@@ -16,6 +16,7 @@ export const AdminPanel = () => {
             <Link to='/admin_articles' className='font-semibold 2xl:block 2xp:px-0 sm:px-6 px-3'>Articles</Link>
             <Link to='/admin_users' className='font-semibold 2xl:block 2xp:px-0 sm:px-6 px-3'>Utilisateurs</Link>
             <Link to='/admin_activities' className='font-semibold 2xl:block 2xp:px-0 sm:px-6 px-3'>Activités</Link>
+            <Link to='/admin_inscriptions' className='font-semibold 2xl:block 2xp:px-0 sm:px-6 px-3'>Inscriptions</Link>
           </div>
           <div className="flex md:justify-between md:flex-row md:items-center primary-bg text-white rounded-b py-1 flex-col items-center" />
         </div>

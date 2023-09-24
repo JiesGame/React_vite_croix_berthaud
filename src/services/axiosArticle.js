@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-// const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
 const baseURL = import.meta.env.VITE_API_URL;
 
 export const articlesFetch = async (setDataArticles) => {
@@ -14,7 +13,6 @@ export const articlesFetch = async (setDataArticles) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setDataArticles(response.data.reverse())
     return response.data
   })
@@ -34,7 +32,6 @@ export const articlesCategoryFetch = async (setDataArticles, category) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setDataArticles(response.data.reverse());
     return response.data;
   })
@@ -76,7 +73,6 @@ export const showArticleFetch = async (id, setDataArticle) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setDataArticle(response.data);
     return response.data
   })

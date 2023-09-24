@@ -1,8 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { toastError, toastSuccess } from './toast';
+import { toastError, toastSuccess, toastInfo } from './toast';
 
-// const baseURL = "https://api-croix-berthaud-0572b1b3d9d4.herokuapp.com"
 const baseURL = import.meta.env.VITE_API_URL;
 
 export const usersFetch = async (setUsersData) => {
@@ -16,7 +15,6 @@ export const usersFetch = async (setUsersData) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setUsersData(response.data)
     return response.data
   })
@@ -37,8 +35,77 @@ export const userFetch = async (id, setInfoDeleteUSer) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setInfoDeleteUSer({id:response.data.id,email:response.data.email})
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const usersInscriptionFetch = async (setUsersData) => {
+  const fetchURL = `${baseURL}/admin/users_with_unvalidated_activities`
+  return axios.get(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    setUsersData(response.data)
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const validateUserInscriptionFetch = async (id) => {
+  const fetchURL = `${baseURL}/family_member_activities/${id}`;
+  return axios.put(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    if(response.status == 200) {
+      toastSuccess("L'inscription a été validée.");
+      window.location.reload();
+    } else {
+      toastError("L'inscription n'a pas pu être validée.");
+    }
+    return response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    throw error;
+  });
+};
+
+export const deleteUserInscriptionFetch = async (id) => {
+  const fetchURL = `${baseURL}/family_member_activities/${id}`;
+  return axios.delete(
+    fetchURL,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Cookies.get('token')}`
+      }
+    }
+  )
+  .then(response => {
+    if(response.status == 202) {
+      toastInfo("L'inscription a été annulée.");
+      window.location.reload();
+    } else {
+      toastError("L'inscription n'a pas pu être annulée.");
+    }
     return response.data
   })
   .catch(error => {
@@ -58,7 +125,6 @@ export const userAdminDeleteFetch = async (id) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
@@ -79,7 +145,6 @@ export const createArticleFetch = async (data) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
@@ -99,7 +164,6 @@ export const deleteArticleFetch = async (articleID) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
@@ -120,7 +184,6 @@ export const updateArticleFetch = async (data, id) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
@@ -140,7 +203,6 @@ export const deleteCommentFetch = async (articleID, commentID) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
