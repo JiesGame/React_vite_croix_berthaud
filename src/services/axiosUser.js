@@ -16,7 +16,6 @@ export const registerFetch = async (data) => {
     fetchURL, fetchBody
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
@@ -82,7 +81,6 @@ export const forgotPasswordFetch = async (data) => {
     fetchURL, fetchBody
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
@@ -100,7 +98,6 @@ export const resetPasswordFetch = async (data, token) => {
     fetchURL, fetchBody
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {
@@ -151,7 +148,6 @@ export const deleteProfileFetch = async (data, setUserInfo) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     Cookies.remove("token");
     Cookies.remove("userInfo");
     setUserInfo(null);
@@ -200,9 +196,7 @@ export const familyMembersAndActivitiesFetch = async (userID, setFamilyMembers) 
     }
   )
   .then(response => {
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
     console.log('Response data:', response.data);
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
     setFamilyMembers(response.data.family_members)
     return response.data
   })

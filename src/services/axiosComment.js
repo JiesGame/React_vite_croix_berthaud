@@ -13,7 +13,6 @@ export const commentsFetch = async (articleID, setComments) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setComments(response.data);
     return response.data
   })
@@ -35,7 +34,6 @@ export const createCommentFetch = async (articleID, data) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     return response.data
   })
   .catch(error => {

@@ -43,7 +43,10 @@ export const Profile = () => {
                     <div className="flex flex-col items-center w-full justify-center p-4">
                       {familyMember.activities &&
                         familyMember.activities.map((activity, index) => (
-                          <p key={index}>{activity.name}</p>
+                          <div key={index}>
+                            <p>{activity.name}</p>
+                            {!familyMember.family_member_activities[index].validation && <p className="text-red-600 font-bold">en attente de validation</p>}
+                          </div>
                         ))}
                     </div>
                   </div>

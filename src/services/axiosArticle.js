@@ -13,7 +13,6 @@ export const articlesFetch = async (setDataArticles) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setDataArticles(response.data.reverse())
     return response.data
   })
@@ -33,7 +32,6 @@ export const articlesCategoryFetch = async (setDataArticles, category) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setDataArticles(response.data.reverse());
     return response.data;
   })
@@ -75,7 +73,6 @@ export const showArticleFetch = async (id, setDataArticle) => {
     }
   )
   .then(response => {
-    console.log('Response data:', response.data);
     setDataArticle(response.data);
     return response.data
   })
