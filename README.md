@@ -3,7 +3,7 @@
 
 Création de notre Projet Final en équipe.
 
-Notre github : TeamKiTu
+Notre github : JiesGame
 
 Lien du site en production : https://maison-quartier-croix-berthaud.vercel.app/
 
