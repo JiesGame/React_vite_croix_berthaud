@@ -62,7 +62,7 @@ export const Footer = () => {
                       Contact
                     </Link>
                   </li>
-                  <li className="md:mx-2">
+                  <li className="md:mx-2 invisible sm:visible">
                     |
                   </li>
                   <li>
@@ -89,7 +89,7 @@ export const Footer = () => {
           </div>
         ) : (
           <>
-            <div className="w-full flex justify-between">
+            <div className="w-full sm:flex sm:justify-between">
               <div>
                 <p className="font-semibold ml-5 mt-1 sm:ml-0 mb-3 sm:mb-[-12px]">Maison de quartier</p>
                 <p className="font-semibold ml-5 mt-3 sm:ml-0 mb-3 sm:mb-[-12px]">La Croix Berthaud</p>
@@ -98,13 +98,13 @@ export const Footer = () => {
                 <p className="font-semibold ml-5 mt-3 sm:ml-0 mb-3 sm:mb-[-12px]">42400 Saint-Chamond</p>
               </div>
               <div className="md:flex md:justify-center">
-                <ul className="md:flex md:place-items-end flex justify-center text-center">
+                <ul className="md:flex md:place-items-end md:justify-center text-center">
                   <li>
                     <span onClick={handleHyperLinkFB} rel="noopener noreferrer" className="cursor-pointer text-white dark flex justify-center">
                       <img src={fbf} alt="facebookFooter" className="w-auto h-8 ml-7 fbicon" />
                     </span>
                   </li>
-                  <li className="md:mx-2 hidden md:inline-block mb-1">
+                  <li className="md:mx-2 mb-1">
                   |
                   </li>
                   <li>
@@ -112,7 +112,7 @@ export const Footer = () => {
                       Contact
                     </Link>
                   </li>
-                  <li className="md:mx-2 hidden md:inline-block mb-1">
+                  <li className="md:mx-2 invisible sm:visible mb-1">
                   |
                   </li>
                   <li>
@@ -120,7 +120,7 @@ export const Footer = () => {
                       Règlement intérieur
                     </Link>
                   </li>
-                  <li className="md:mx-2 hidden md:inline-block mb-1">
+                  <li className="md:mx-2 mb-1">
                   |
                   </li>
                   <li>
