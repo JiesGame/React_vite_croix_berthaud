@@ -184,7 +184,6 @@ export const Navbar = () => {
               {dropdownStates.maison_de_quartier && (
                 <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
                   <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
-                    <Link to="/prices" className='cursor-pointer pb-4 px-[1%] white'>● Tarifs des activités</Link>
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}
@@ -207,6 +206,7 @@ export const Navbar = () => {
               {dropdownStates.programme && (
                 <div className="px-[10%] text-center dropdown-content cursor-pointer w-full left-0 py-3 sm:py-6 primary-bg">
                   <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3">
+                    <Link to="/prices" className='cursor-pointer pb-4 px-[1%] white'>● Tarifs des activités</Link>
                     {dataArticles.map((article) => (
                       <Link
                         to={`/article/${article.id}`}

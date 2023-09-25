@@ -89,6 +89,9 @@ footer a:hover {
 .button:hover {
   background-color: #074a6e !important;
 }
+.button404:hover {
+  background-color: #059DE0 !important;
+}
 
 .rate {
   float: left;
